@@ -104,7 +104,7 @@ Layout TexParser::popCommand() {
       return popSqrtCommand();
     }
   }
-  m_hasError = true
+  m_hasError = true;
   return popFracCommand();
 }
 
