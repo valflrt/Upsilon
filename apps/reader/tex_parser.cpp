@@ -16,31 +16,34 @@ Layout TexParser::getLayout() {
   const char * start = m_text;
   
   while (m_text < m_endOfText) {
-    if (*m_text == '\\') {
+    switch (*m_text)
+    {
+    case '\\':
       if (start != m_text) {
         layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
       }
       m_text ++;
       layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(), false);
       start = m_text;
-    }
-    else if (*m_text == " ") {
+      break;
+    case ' ':
       if (start != m_text) {
         layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
       }
-      m_text ++;
+      m_text++;
       start = m_text;
-    }
-    else if (*m_text == "^") {
+      break;
+    case '^':
       if (start != m_text) {
         layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
       }
-      m_text ++;
-      layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(), false);
+      m_text++;
+      layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(),false);
       start = m_text;
-    }
-    else {
-      m_text ++;
+      break;
+    default:
+      m_text++;
+      break;
     }
   }
 
