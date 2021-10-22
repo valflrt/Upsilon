@@ -7,6 +7,7 @@ app_sreader_src = $(addprefix apps/reader/,\
   utility.cpp \
   read_book_controller \
   word_wrap_view.cpp \
+  tex_parser.cpp \
 )
 
 apps_src += $(app_sreader_src)
