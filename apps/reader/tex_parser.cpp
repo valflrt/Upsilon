@@ -12,48 +12,7 @@ TexParser::TexParser(const char * text, const char * endOfText) :
 }
 
 Layout TexParser::getLayout() {
-<<<<<<< HEAD
-  HorizontalLayout layout = HorizontalLayout::Builder();
-  const char * start = m_text;
-  
-  while (m_text < m_endOfText) {
-    switch (*m_text)
-    {
-    case '\\':
-      if (start != m_text) {
-        layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
-      }
-      m_text ++;
-      layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(), false);
-      start = m_text;
-      break;
-    case ' ':
-      if (start != m_text) {
-        layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
-      }
-      m_text++;
-      start = m_text;
-      break;
-    case '^':
-      if (start != m_text) {
-        layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
-      }
-      m_text++;
-      layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(),false);
-      start = m_text;
-      break;
-    default:
-      m_text++;
-      break;
-    }
-  }
-
-  if (start != m_text) {
-    layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
-  }
-=======
   Layout layout = popText(0);
->>>>>>> 89c08acc7f59900fd12f2bdaacbae1827ccb73a1
 
   if (m_hasError) {
     return CodePointLayout::Builder(CodePoint(0xFFD));
