@@ -21,12 +21,12 @@ Layout TexParser::getLayout() {
   return layout;
 }
 
-Layout TexParser::popBlock(char block) {
+Layout TexParser::popBlock() {
   while (*m_text == ' ') {
     m_text ++;
   }
 
-  if (*m_text == block) {
+  if (*m_text == '{') {
     m_text ++;
     return popText('}');
   }
@@ -71,7 +71,15 @@ Layout TexParser::popText(char stop) {
           layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
         }
         m_text ++;
-        layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(), false);
+        layout.addOrMergeChildAtIndex(VerticalOffsetLayout::Builder(popBlock(), VerticalOffsetLayoutNode::Position::Superscript), layout.numberOfChildren(), false);
+        start = m_text;
+        break;
+      case '_':
+        if (start != m_text) {
+          layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
+        }
+        m_text ++;
+        layout.addOrMergeChildAtIndex(VerticalOffsetLayout::Builder(popBlock(), VerticalOffsetLayoutNode::Position::Subscript), layout.numberOfChildren(), false);
         start = m_text;
         break;
       default:
@@ -82,11 +90,12 @@ Layout TexParser::popText(char stop) {
   if (start != m_text) {
     layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
   }
-  if (layout.numberOfChildren() == 1) {
-    layout.squashUnaryHierarchyInPlace();
-  }
-
+  
   m_text ++;
+
+  if (layout.numberOfChildren() == 1) {
+    return layout.squashUnaryHierarchyInPlace();
+  }
 
   return layout;
 }
@@ -102,9 +111,7 @@ Layout TexParser::popCommand() {
 }
 
 Layout TexParser::popFracCommand() {
-  Layout firstBlock = popBlock('{');
-  Layout secondBlock = popBlock('{');
-  return FractionLayout::Builder(firstBlock, secondBlock);
+  return FractionLayout::Builder(popBlock(), popBlock());
 }
 
 }
