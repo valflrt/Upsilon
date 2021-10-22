@@ -12,6 +12,7 @@ TexParser::TexParser(const char * text, const char * endOfText) :
 }
 
 Layout TexParser::getLayout() {
+<<<<<<< HEAD
   HorizontalLayout layout = HorizontalLayout::Builder();
   const char * start = m_text;
   
@@ -50,6 +51,9 @@ Layout TexParser::getLayout() {
   if (start != m_text) {
     layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
   }
+=======
+  Layout layout = popText(0);
+>>>>>>> 89c08acc7f59900fd12f2bdaacbae1827ccb73a1
 
   if (m_hasError) {
     return CodePointLayout::Builder(CodePoint(0xFFD));
@@ -58,12 +62,12 @@ Layout TexParser::getLayout() {
   return layout;
 }
 
-Layout TexParser::popBlock() {
+Layout TexParser::popBlock(char block) {
   while (*m_text == ' ') {
     m_text ++;
   }
 
-  if (*m_text == '{') {
+  if (*m_text == block) {
     m_text ++;
     return popText('}');
   }
@@ -83,28 +87,48 @@ Layout TexParser::popBlock() {
 }
 
 Layout TexParser::popText(char stop) {
-  if (*m_text == '\\') {
-    m_text ++;
-    return popCommand();
-  }
-
   HorizontalLayout layout = HorizontalLayout::Builder();
   const char * start = m_text;
   
-  while (m_text < m_endOfText) {
-    if (*m_text == '\\') {
-      layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
-      m_text ++;
-      layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(), false);
-      start = m_text;
+  while (m_text < m_endOfText && *m_text != stop) {
+    switch (*m_text) {
+      case '\\':
+        if (start != m_text) {
+          layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
+        }
+        m_text ++;
+        layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(), false);
+        start = m_text;
+        break;
+      case ' ':
+        if (start != m_text) {
+          layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
+        }
+        m_text ++;
+        start = m_text;
+        break;
+      case '^':
+        if (start != m_text) {
+          layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
+        }
+        m_text ++;
+        layout.addOrMergeChildAtIndex(popCommand(), layout.numberOfChildren(), false);
+        start = m_text;
+        break;
+      default:
+        m_text ++;
     }
-
-    m_text ++;
   }
 
   if (start != m_text) {
     layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
   }
+  if (layout.numberOfChildren() == 1) {
+    layout.squashUnaryHierarchyInPlace();
+  }
+
+  m_text ++;
+
   return layout;
 }
 
@@ -119,8 +143,8 @@ Layout TexParser::popCommand() {
 }
 
 Layout TexParser::popFracCommand() {
-  Layout firstBlock = popBlock();
-  Layout secondBlock = popBlock();
+  Layout firstBlock = popBlock('{');
+  Layout secondBlock = popBlock('{');
   return FractionLayout::Builder(firstBlock, secondBlock);
 }
 
