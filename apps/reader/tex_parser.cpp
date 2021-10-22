@@ -98,14 +98,20 @@ Layout TexParser::popCommand() {
       return popFracCommand();
     } 
   }
-  else if (strcmp(k_sqrtCommand, m_text, strlen(k_fracCommand)) == 0) {
-    m_text += strlen(k_fracCommand);
+  else if (strncmp(k_sqrtCommand, m_text, strlen(k_sqrtCommand)) == 0) {
+    m_text += strlen(k_sqrtCommand);
     if (*m_text == ' ' || *m_text == '{' || *m_text == '[') {
       return popSqrtCommand();
     }
   }
-
+  m_hasError = true
   return popFracCommand();
+}
+
+Layout TexParser::popFracCommand() {
+  Layout firstBlock = popBlock();
+  Layout secondBlock = popBlock();
+  return FractionLayout::Builder(firstBlock, secondBlock);
 }
 
 Layout TexParser::popSqrtCommand() {
@@ -121,10 +127,5 @@ Layout TexParser::popSqrtCommand() {
   }
 }
 
-Layout TexParser::popFracCommand() {
-  Layout firstBlock = popBlock();
-  Layout secondBlock = popBlock();
-  return FractionLayout::Builder(firstBlock, secondBlock);
-}
 
 }
