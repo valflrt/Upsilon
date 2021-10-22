@@ -19,11 +19,13 @@ private:
   Layout popText(char stop);
   Layout popCommand();
   Layout popFracCommand();
+  Layout popSqrtCommand();
   const char * m_text;
   const char * m_endOfText;
   bool m_hasError;
 
   static constexpr char const * k_fracCommand = "frac";
+  static constexpr char const * k_sqrtCommand = "sqrt";
 };
   
 }

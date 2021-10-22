@@ -21,12 +21,12 @@ Layout TexParser::getLayout() {
   return layout;
 }
 
-Layout TexParser::popBlock(char block) {
+Layout TexParser::popBlock() {
   while (*m_text == ' ') {
     m_text ++;
   }
 
-  if (*m_text == block) {
+  if (*m_text == '}') {
     m_text ++;
     return popText('}');
   }
@@ -98,12 +98,32 @@ Layout TexParser::popCommand() {
       return popFracCommand();
     } 
   }
+  else if (strcmp(k_sqrtCommand, m_text, strlen(k_fracCommand)) == 0) {
+    m_text += strlen(k_fracCommand);
+    if (*m_text == ' ' || *m_text == '{' || *m_text == '[') {
+      return popSqrtCommand();
+    }
+  }
+
   return popFracCommand();
 }
 
+Layout TexParser::popSqrtCommand() {
+  while (*m_text == ' ') {
+    m_text ++;
+  }
+  m_text++;
+  if (*m_text == '[') {
+    return NthRootLayout::Builder(popText(']'),popBlock());
+  }
+  else {
+    return NthRootLayout::Builder(popBlock());
+  }
+}
+
 Layout TexParser::popFracCommand() {
-  Layout firstBlock = popBlock('{');
-  Layout secondBlock = popBlock('{');
+  Layout firstBlock = popBlock();
+  Layout secondBlock = popBlock();
   return FractionLayout::Builder(firstBlock, secondBlock);
 }
 
