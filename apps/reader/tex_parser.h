@@ -20,12 +20,16 @@ private:
   Layout popCommand();
   Layout popFracCommand();
   Layout popSqrtCommand();
+  Layout popPiCommand();
+  Layout popThetaCommand();
   const char * m_text;
   const char * m_endOfText;
   bool m_hasError;
 
   static constexpr char const * k_fracCommand = "frac";
   static constexpr char const * k_sqrtCommand = "sqrt";
+  static constexpr char const * k_thetaCommand = "theta";
+  static constexpr char const * k_piCommand = "pi";
 };
   
 }

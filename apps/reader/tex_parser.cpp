@@ -113,8 +113,21 @@ Layout TexParser::popCommand() {
       return popSqrtCommand();
     }
   }
+  else if (strncmp(k_thetaCommand, m_text, strlen(k_thetaCommand)) == 0) {
+    m_text += strlen(k_thetaCommand);
+    if (*m_text == ' ') {
+      return popThetaCommand();
+    }
+  }
+  else if (strncmp(k_piCommand, m_text, strlen(k_piCommand)) == 0) {
+    m_text += strlen(k_piCommand);
+    if (*m_text == ' ') {
+      return popPiCommand();
+    }
+  }
+  
   m_hasError = true;
-  return popFracCommand();
+  return LayoutHelper::String(m_text, strlen(m_text));
 }
 
 Layout TexParser::popFracCommand() {
@@ -127,12 +140,19 @@ Layout TexParser::popSqrtCommand() {
   }
   m_text++;
   if (*m_text == '[') {
-    return NthRootLayout::Builder(popText(']'),popBlock());
+    return NthRootLayout::Builder(popText(']'), popBlock());
   }
   else {
     return NthRootLayout::Builder(popBlock());
   }
 }
 
+Layout TexParser::popThetaCommand() {
+  return CodePointLayout::Builder(UCodePointGreekSmallLetterTheta);
+}
+
+Layout TexParser::popPiCommand() {
+  return CodePointLayout::Builder(UCodePointGreekSmallLetterPi);
+}
 
 }
