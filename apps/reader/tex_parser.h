@@ -20,8 +20,8 @@ private:
   Layout popCommand();
   Layout popFracCommand();
   Layout popSqrtCommand();
-  Layout popPiCommand();
-  Layout popThetaCommand();
+  Layout poppiCommand();
+  Layout popthetaCommand();
   const char * m_text;
   const char * m_endOfText;
   bool m_hasError;

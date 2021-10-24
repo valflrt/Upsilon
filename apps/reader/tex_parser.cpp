@@ -15,7 +15,7 @@ Layout TexParser::getLayout() {
   Layout layout = popText(0);
 
   if (m_hasError) {
-    return CodePointLayout::Builder(CodePoint(0xFFD));
+    return CodePointLayout::Builder(CodePoint(0xffd));
   }
 
   return layout;
@@ -116,13 +116,13 @@ Layout TexParser::popCommand() {
   else if (strncmp(k_thetaCommand, m_text, strlen(k_thetaCommand)) == 0) {
     m_text += strlen(k_thetaCommand);
     if (*m_text == ' ') {
-      return popThetaCommand();
+      return popthetaCommand();
     }
   }
   else if (strncmp(k_piCommand, m_text, strlen(k_piCommand)) == 0) {
     m_text += strlen(k_piCommand);
     if (*m_text == ' ') {
-      return popPiCommand();
+      return poppiCommand();
     }
   }
   
@@ -147,12 +147,12 @@ Layout TexParser::popSqrtCommand() {
   }
 }
 
-Layout TexParser::popThetaCommand() {
-  return CodePointLayout::Builder(UCodePointGreekSmallLetterTheta);
+Layout TexParser::popthetaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3b8));
 }
 
-Layout TexParser::popPiCommand() {
-  return CodePointLayout::Builder(UCodePointGreekSmallLetterPi);
+Layout TexParser::poppiCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3c0));
 }
 
 }
