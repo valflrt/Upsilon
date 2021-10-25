@@ -15,7 +15,7 @@ Layout TexParser::getLayout() {
   Layout layout = popText(0);
 
   if (m_hasError) {
-    return CodePointLayout::Builder(CodePoint(0xffd));
+    return CodePointLayout::Builder(CodePoint(0xfffd));
   }
 
   return layout;
