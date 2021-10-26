@@ -125,11 +125,42 @@ Layout TexParser::popCommand() {
       return poppiCommand();
     }
   }
+  else if (strncmp(k_timesCommand, m_text, strlen(k_timesCommand)) == 0) {
+    m_text += strlen(k_timesCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poptimesCommand();
+    }
+  }
+  else if (strncmp(k_divCommand, m_text, strlen(k_divCommand)) == 0) {
+    m_text += strlen(k_divCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popdivCommand();
+    }
+  }
+  else if (strncmp(k_forallCommand, m_text, strlen(k_forallCommand)) == 0) {
+    m_text += strlen(k_forallCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popforallCommand();
+    }
+  }
+  else if (strncmp(k_partialCommand, m_text, strlen(k_partialCommand)) == 0) {
+    m_text += strlen(k_partialCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poppartialCommand();
+    }
+  }
+  else if (strncmp(k_existsCommand, m_text, strlen(k_existsCommand)) == 0) {
+    m_text += strlen(k_existsCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popexistsCommand();
+    }
+  }
   
   m_hasError = true;
   return LayoutHelper::String(m_text, strlen(m_text));
 }
 
+// Expressions
 Layout TexParser::popFracCommand() {
   Layout numerator = popBlock();
   Layout denominator = popBlock();
@@ -152,6 +183,28 @@ Layout TexParser::popSqrtCommand() {
   }
 }
 
+// Symbols
+Layout TexParser::poptimesCommand() {
+  return CodePointLayout::Builder(CodePoint(0xd7));
+}
+
+Layout TexParser::popdivCommand() {
+  return CodePointLayout::Builder(CodePoint(0xf7));
+}
+
+Layout TexParser::popforallCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2200));
+}
+
+Layout TexParser::poppartialCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2202));
+}
+
+Layout TexParser::popexistsCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2203));
+}
+
+// Greek letters
 Layout TexParser::popthetaCommand() {
   return CodePointLayout::Builder(CodePoint(0x3b8));
 }
