@@ -204,13 +204,98 @@ Layout TexParser::popexistsCommand() {
   return CodePointLayout::Builder(CodePoint(0x2203));
 }
 
-// Greek letters
+// Greek small letters
+Layout TexParser::popalphaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3b1));
+}
+
+Layout TexParser::popbetaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3b2));
+}
+
+Layout TexParser::popgammaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3b3));
+}
+
+Layout TexParser::popdeltaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3b4));
+}
+
+Layout TexParser::popepsilonCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3b5));
+}
+
+Layout TexParser::popzetaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3b6));
+}
+
+Layout TexParser::popetaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3b7));
+}
+
 Layout TexParser::popthetaCommand() {
   return CodePointLayout::Builder(CodePoint(0x3b8));
+}
+
+Layout TexParser::popiotaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3b9));
+}
+
+Layout TexParser::popkappaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3ba));
+}
+
+Layout TexParser::poplambdaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3bb));
+}
+
+Layout TexParser::popmuCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3bc));
+}
+
+Layout TexParser::popnuCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3bd));
+}
+
+Layout TexParser::popksiCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3be));
 }
 
 Layout TexParser::poppiCommand() {
   return CodePointLayout::Builder(CodePoint(0x3c0));
 }
+
+Layout TexParser::poprhoCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3c1));
+}
+
+Layout TexParser::popsigmaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3c3));
+}
+
+Layout TexParser::poptauCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3c4));
+}
+
+Layout TexParser::popupsilonCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3c5));
+}
+
+Layout TexParser::popphiCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3c6));
+}
+
+Layout TexParser::popkhiCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3c7));
+}
+
+Layout TexParser::poppsiCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3c8));
+}
+
+Layout TexParser::popomegaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3c9));
+}
+
 
 }
