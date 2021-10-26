@@ -115,13 +115,13 @@ Layout TexParser::popCommand() {
   }
   else if (strncmp(k_thetaCommand, m_text, strlen(k_thetaCommand)) == 0) {
     m_text += strlen(k_thetaCommand);
-    if (*m_text == ' ') {
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
       return popthetaCommand();
     }
   }
   else if (strncmp(k_piCommand, m_text, strlen(k_piCommand)) == 0) {
     m_text += strlen(k_piCommand);
-    if (*m_text == ' ') {
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
       return poppiCommand();
     }
   }
@@ -131,16 +131,21 @@ Layout TexParser::popCommand() {
 }
 
 Layout TexParser::popFracCommand() {
-  return FractionLayout::Builder(popBlock(), popBlock());
+  Layout numerator = popBlock();
+  Layout denominator = popBlock();
+  FractionLayout l = FractionLayout::Builder(numerator, denominator);
+  return l;
 }
 
 Layout TexParser::popSqrtCommand() {
   while (*m_text == ' ') {
     m_text ++;
   }
-  m_text++;
   if (*m_text == '[') {
-    return NthRootLayout::Builder(popText(']'), popBlock());
+    m_text ++;
+    Layout rootFactor = popText(']');
+    Layout belowRoot = popBlock();
+    return NthRootLayout::Builder(belowRoot, rootFactor);
   }
   else {
     return NthRootLayout::Builder(popBlock());
