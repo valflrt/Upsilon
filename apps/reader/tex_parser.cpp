@@ -113,18 +113,6 @@ Layout TexParser::popCommand() {
       return popSqrtCommand();
     }
   }
-  else if (strncmp(k_thetaCommand, m_text, strlen(k_thetaCommand)) == 0) {
-    m_text += strlen(k_thetaCommand);
-    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
-      return popthetaCommand();
-    }
-  }
-  else if (strncmp(k_piCommand, m_text, strlen(k_piCommand)) == 0) {
-    m_text += strlen(k_piCommand);
-    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
-      return poppiCommand();
-    }
-  }
   else if (strncmp(k_timesCommand, m_text, strlen(k_timesCommand)) == 0) {
     m_text += strlen(k_timesCommand);
     if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
@@ -153,6 +141,295 @@ Layout TexParser::popCommand() {
     m_text += strlen(k_existsCommand);
     if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
       return popexistsCommand();
+    }
+  }
+  else if (strncmp(k_pmCommand, m_text, strlen(k_pmCommand)) == 0) {
+    m_text += strlen(k_pmCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poppmCommand();
+    }  }
+
+  // Greek capital letters
+  else if (strncmp(k_AlphaCommand, m_text, strlen(k_AlphaCommand)) == 0) {
+    m_text += strlen(k_AlphaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popAlphaCommand();
+    }
+  } 
+  else if (strncmp(k_BetaCommand, m_text, strlen(k_BetaCommand)) == 0) {
+    m_text += strlen(k_BetaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popBetaCommand();
+    }
+  } 
+  else if (strncmp(k_GammaCommand, m_text, strlen(k_GammaCommand)) == 0) {
+    m_text += strlen(k_GammaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popGammaCommand();
+    }
+  } 
+  else if (strncmp(k_DeltaCommand, m_text, strlen(k_DeltaCommand)) == 0) {
+    m_text += strlen(k_DeltaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popDeltaCommand();
+    }
+  } 
+  else if (strncmp(k_EpsilonCommand, m_text, strlen(k_EpsilonCommand)) == 0) {
+    m_text += strlen(k_EpsilonCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popEpsilonCommand();
+    }
+  } 
+  else if (strncmp(k_ZetaCommand, m_text, strlen(k_ZetaCommand)) == 0) {
+    m_text += strlen(k_ZetaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popZetaCommand();
+    }
+  } 
+  else if (strncmp(k_EtaCommand, m_text, strlen(k_EtaCommand)) == 0) {
+    m_text += strlen(k_EtaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popEtaCommand();
+    }
+  }
+  else if (strncmp(k_ThetaCommand, m_text, strlen(k_ThetaCommand)) == 0) {
+    m_text += strlen(k_ThetaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popThetaCommand();
+    }
+  }
+  else if (strncmp(k_IotaCommand, m_text, strlen(k_IotaCommand)) == 0) {
+    m_text += strlen(k_IotaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popIotaCommand();
+    }
+  }
+  else if (strncmp(k_KappaCommand, m_text, strlen(k_KappaCommand)) == 0) {
+    m_text += strlen(k_KappaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popKappaCommand();
+    }
+  }
+  else if (strncmp(k_LambdaCommand, m_text, strlen(k_LambdaCommand)) == 0) {
+    m_text += strlen(k_LambdaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popLambdaCommand();
+    }
+  }
+  else if (strncmp(k_MuCommand, m_text, strlen(k_MuCommand)) == 0) {
+    m_text += strlen(k_MuCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popMuCommand();
+    }
+  }
+  else if (strncmp(k_NuCommand, m_text, strlen(k_NuCommand)) == 0) {
+    m_text += strlen(k_NuCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popNuCommand();
+    }
+  }
+  else if (strncmp(k_KsiCommand, m_text, strlen(k_KsiCommand)) == 0) {
+    m_text += strlen(k_KsiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popKsiCommand();
+    }
+  }
+  else if (strncmp(k_PiCommand, m_text, strlen(k_PiCommand)) == 0) {
+    m_text += strlen(k_PiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popPiCommand();
+    }
+  }
+  else if (strncmp(k_OmicronCommand, m_text, strlen(k_OmicronCommand)) == 0) {
+    m_text += strlen(k_OmicronCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popOmicronCommand();
+    }
+  }
+  else if (strncmp(k_RhoCommand, m_text, strlen(k_RhoCommand)) == 0) {
+    m_text += strlen(k_RhoCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popRhoCommand();
+    }
+  }
+  else if (strncmp(k_SigmaCommand, m_text, strlen(k_SigmaCommand)) == 0) {
+    m_text += strlen(k_SigmaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popSigmaCommand();
+    }
+  }
+  else if (strncmp(k_TauCommand, m_text, strlen(k_TauCommand)) == 0) {
+    m_text += strlen(k_TauCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popTauCommand();
+    }
+  }
+  else if (strncmp(k_UpsilonCommand, m_text, strlen(k_UpsilonCommand)) == 0) {
+    m_text += strlen(k_UpsilonCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popUpsilonCommand();
+    }
+  }
+  else if (strncmp(k_PhiCommand, m_text, strlen(k_PhiCommand)) == 0) {
+    m_text += strlen(k_PhiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popPhiCommand();
+    }
+  }
+  else if (strncmp(k_KhiCommand, m_text, strlen(k_KhiCommand)) == 0) {
+    m_text += strlen(k_KhiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popKhiCommand();
+    }
+  }
+  else if (strncmp(k_PsiCommand, m_text, strlen(k_PsiCommand)) == 0) {
+    m_text += strlen(k_PsiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popPsiCommand();
+    }
+  }
+  else if (strncmp(k_OmegaCommand, m_text, strlen(k_OmegaCommand)) == 0) {
+    m_text += strlen(k_OmegaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popOmegaCommand();
+    }
+  }
+  else if (strncmp(k_alphaCommand, m_text, strlen(k_alphaCommand)) == 0) {
+    m_text += strlen(k_alphaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popalphaCommand();
+    }
+  } 
+  else if (strncmp(k_betaCommand, m_text, strlen(k_betaCommand)) == 0) {
+    m_text += strlen(k_betaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popbetaCommand();
+    }
+  } 
+  else if (strncmp(k_gammaCommand, m_text, strlen(k_gammaCommand)) == 0) {
+    m_text += strlen(k_gammaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popgammaCommand();
+    }
+  } 
+  else if (strncmp(k_deltaCommand, m_text, strlen(k_deltaCommand)) == 0) {
+    m_text += strlen(k_deltaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popdeltaCommand();
+    }
+  } 
+  else if (strncmp(k_epsilonCommand, m_text, strlen(k_epsilonCommand)) == 0) {
+    m_text += strlen(k_epsilonCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popepsilonCommand();
+    }
+  } 
+  else if (strncmp(k_zetaCommand, m_text, strlen(k_zetaCommand)) == 0) {
+    m_text += strlen(k_zetaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popzetaCommand();
+    }
+  } 
+  else if (strncmp(k_etaCommand, m_text, strlen(k_etaCommand)) == 0) {
+    m_text += strlen(k_etaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popetaCommand();
+    }
+  }
+  else if (strncmp(k_thetaCommand, m_text, strlen(k_thetaCommand)) == 0) {
+    m_text += strlen(k_thetaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popthetaCommand();
+    }
+  }
+  else if (strncmp(k_iotaCommand, m_text, strlen(k_iotaCommand)) == 0) {
+    m_text += strlen(k_iotaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popiotaCommand();
+    }
+  }
+  else if (strncmp(k_kappaCommand, m_text, strlen(k_kappaCommand)) == 0) {
+    m_text += strlen(k_kappaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popkappaCommand();
+    }
+  }
+  else if (strncmp(k_lambdaCommand, m_text, strlen(k_lambdaCommand)) == 0) {
+    m_text += strlen(k_lambdaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poplambdaCommand();
+    }
+  }
+  else if (strncmp(k_muCommand, m_text, strlen(k_muCommand)) == 0) {
+    m_text += strlen(k_muCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popmuCommand();
+    }
+  }
+  else if (strncmp(k_nuCommand, m_text, strlen(k_nuCommand)) == 0) {
+    m_text += strlen(k_nuCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popnuCommand();
+    }
+  }
+  else if (strncmp(k_ksiCommand, m_text, strlen(k_ksiCommand)) == 0) {
+    m_text += strlen(k_ksiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popksiCommand();
+    }
+  }
+  else if (strncmp(k_piCommand, m_text, strlen(k_piCommand)) == 0) {
+    m_text += strlen(k_piCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poppiCommand();
+    }
+  }
+  else if (strncmp(k_rhoCommand, m_text, strlen(k_rhoCommand)) == 0) {
+    m_text += strlen(k_rhoCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poprhoCommand();
+    }
+  }
+  else if (strncmp(k_sigmaCommand, m_text, strlen(k_sigmaCommand)) == 0) {
+    m_text += strlen(k_sigmaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popsigmaCommand();
+    }
+  }
+  else if (strncmp(k_tauCommand, m_text, strlen(k_tauCommand)) == 0) {
+    m_text += strlen(k_tauCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poptauCommand();
+    }
+  }
+  else if (strncmp(k_upsilonCommand, m_text, strlen(k_upsilonCommand)) == 0) {
+    m_text += strlen(k_upsilonCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popupsilonCommand();
+    }
+  }
+  else if (strncmp(k_phiCommand, m_text, strlen(k_phiCommand)) == 0) {
+    m_text += strlen(k_phiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popphiCommand();
+    }
+  }
+  else if (strncmp(k_khiCommand, m_text, strlen(k_khiCommand)) == 0) {
+    m_text += strlen(k_khiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popkhiCommand();
+    }
+  }
+  else if (strncmp(k_psiCommand, m_text, strlen(k_psiCommand)) == 0) {
+    m_text += strlen(k_psiCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poppsiCommand();
+    }
+  }
+  else if (strncmp(k_omegaCommand, m_text, strlen(k_omegaCommand)) == 0) {
+    m_text += strlen(k_omegaCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popomegaCommand();
     }
   }
   
@@ -202,6 +479,107 @@ Layout TexParser::poppartialCommand() {
 
 Layout TexParser::popexistsCommand() {
   return CodePointLayout::Builder(CodePoint(0x2203));
+}
+
+Layout TexParser::poppmCommand() {
+  return CodePointLayout::Builder(CodePoint(0xb1));
+}
+
+// Greek Capital letters
+Layout TexParser::popAlphaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x391));
+}
+
+Layout TexParser::popBetaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x392));
+}
+
+Layout TexParser::popGammaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x393));
+}
+
+Layout TexParser::popDeltaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x394));
+}
+
+Layout TexParser::popEpsilonCommand() {
+  return CodePointLayout::Builder(CodePoint(0x395));
+}
+
+Layout TexParser::popZetaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x396));
+}
+
+Layout TexParser::popEtaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x397));
+}
+
+Layout TexParser::popThetaCommand() {
+  return CodePointLayout::Builder(CodePoint(0x398));
+}
+
+Layout TexParser::popIotaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x399));
+}
+
+Layout TexParser::popKappaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x39a));
+}
+
+Layout TexParser::popLambdaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x39b));
+}
+
+Layout TexParser::popMuCommand(){
+  return CodePointLayout::Builder(CodePoint(0x39c));
+}
+
+Layout TexParser::popNuCommand(){
+  return CodePointLayout::Builder(CodePoint(0x39d));
+}
+
+Layout TexParser::popKsiCommand() {
+  return CodePointLayout::Builder(CodePoint(0x39e));
+}
+
+Layout TexParser::popOmicronCommand() {
+  return CodePointLayout::Builder(CodePoint(0x39f));
+}
+
+Layout TexParser::popPiCommand() {
+  return CodePointLayout::Builder(CodePoint(0x3a0));
+}
+
+Layout TexParser::popRhoCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3a1));
+}
+
+Layout TexParser::popSigmaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3a3));
+}
+
+Layout TexParser::popTauCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3a4));
+}
+
+Layout TexParser::popUpsilonCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3a5));
+}
+
+Layout TexParser::popPhiCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3a6));
+}
+
+Layout TexParser::popKhiCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3a7));
+}
+
+Layout TexParser::popPsiCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3a8));
+}
+
+Layout TexParser::popOmegaCommand(){
+  return CodePointLayout::Builder(CodePoint(0x3a9));
 }
 
 // Greek small letters

@@ -29,33 +29,34 @@ private:
   Layout popforallCommand();
   Layout poppartialCommand();
   Layout popexistsCommand();
+  Layout poppmCommand();
 
   // Greek capital letters
 
-  // Layout popAlphaCommand();
-  // Layout popBetaCommand();
-  // Layout popGammaCommand();
-  // Layout popDeltaCommand();
-  // Layout popEpsilonCommand();
-  // Layout popZetaCommand();
-  // Layout popEtaCommand();
-  // Layout popThetaCommand();
-  // Layout popIotaCommand();
-  // Layout popKappaaCommand();
-  // Layout popLambdaCommand();
-  // Layout popMuCommand();
-  // Layout popNuCommand();
-  // Layout popKsiCommand();
-  // Layout popOmicronCommand();
-  // Layout popPiCommand();
-  // Layout popRhoCommand();
-  // Layout popSigmaCommand();
-  // Layout popTauCommand();
-  // Layout popUpsilonCommand();
-  // Layout popPhiCommand();
-  // Layout popKhiCommand();
-  // Layout popPsiCommand();
-  // Layout popOmegaCommand();
+  Layout popAlphaCommand();
+  Layout popBetaCommand();
+  Layout popGammaCommand();
+  Layout popDeltaCommand();
+  Layout popEpsilonCommand();
+  Layout popZetaCommand();
+  Layout popEtaCommand();
+  Layout popThetaCommand();
+  Layout popIotaCommand();
+  Layout popKappaCommand();
+  Layout popLambdaCommand();
+  Layout popMuCommand();
+  Layout popNuCommand();
+  Layout popKsiCommand();
+  Layout popOmicronCommand();
+  Layout popPiCommand();
+  Layout popRhoCommand();
+  Layout popSigmaCommand();
+  Layout popTauCommand();
+  Layout popUpsilonCommand();
+  Layout popPhiCommand();
+  Layout popKhiCommand();
+  Layout popPsiCommand();
+  Layout popOmegaCommand();
 
   // Greek small letters
   Layout popalphaCommand();
@@ -96,32 +97,33 @@ private:
   static constexpr char const * k_forallCommand = "forall";
   static constexpr char const * k_partialCommand = "partial";
   static constexpr char const * k_existsCommand = "exists";
+  static constexpr char const * k_pmCommand = "pm";
   // Greek capital letters
 
-  // static constexpr char const * k_AlphaCommand = "Alpha";
-  // static constexpr char const * k_BetaCommand = "Beta";
-  // static constexpr char const * k_GammaCommand = "Gamma";
-  // static constexpr char const * k_DeltaCommand = "Delta";
-  // static constexpr char const * k_EpsilonCommand = "Epsilon";
-  // static constexpr char const * k_ZetaCommand = "Zeta";
-  // static constexpr char const * k_EtaCommand = "Eta";
-  // static constexpr char const * k_ThetaCommand = "Theta";
-  // static constexpr char const * k_IotaCommand = "Iota";
-  // static constexpr char const * k_KappaaCommand = "Kappa";
-  // static constexpr char const * k_LambdaCommand = "Lambda";
-  // static constexpr char const * k_MuCommand = "Mu";
-  // static constexpr char const * k_NuCommand = "Mu";
-  // static constexpr char const * k_KsiCommand = "Ksi";
-  // static constexpr char const * k_OmicronCommand = "Omicron";
-  // static constexpr char const * k_PiCommand = "Pi";
-  // static constexpr char const * k_RhoCommand = "Rho";
-  // static constexpr char const * k_SigmaCommand = "Sigma";
-  // static constexpr char const * k_TauCommand = "Tau";
-  // static constexpr char const * k_UpsilonCommand = "Upsilon";
-  // static constexpr char const * k_PhiCommand = "Phi";
-  // static constexpr char const * k_KhiCommand = "Khi";
-  // static constexpr char const * k_PsiCommand = "Psi";
-  // static constexpr char const * k_OmegaCommand = "Omega";
+  static constexpr char const * k_AlphaCommand = "Alpha";
+  static constexpr char const * k_BetaCommand = "Beta";
+  static constexpr char const * k_GammaCommand = "Gamma";
+  static constexpr char const * k_DeltaCommand = "Delta";
+  static constexpr char const * k_EpsilonCommand = "Epsilon";
+  static constexpr char const * k_ZetaCommand = "Zeta";
+  static constexpr char const * k_EtaCommand = "Eta";
+  static constexpr char const * k_ThetaCommand = "Theta";
+  static constexpr char const * k_IotaCommand = "Iota";
+  static constexpr char const * k_KappaCommand = "Kappa";
+  static constexpr char const * k_LambdaCommand = "Lambda";
+  static constexpr char const * k_MuCommand = "Mu";
+  static constexpr char const * k_NuCommand = "Nu";
+  static constexpr char const * k_KsiCommand = "Ksi";
+  static constexpr char const * k_OmicronCommand = "Omicron";
+  static constexpr char const * k_PiCommand = "Pi";
+  static constexpr char const * k_RhoCommand = "Rho";
+  static constexpr char const * k_SigmaCommand = "Sigma";
+  static constexpr char const * k_TauCommand = "Tau";
+  static constexpr char const * k_UpsilonCommand = "Upsilon";
+  static constexpr char const * k_PhiCommand = "Phi";
+  static constexpr char const * k_KhiCommand = "Khi";
+  static constexpr char const * k_PsiCommand = "Psi";
+  static constexpr char const * k_OmegaCommand = "Omega";
 
   // Greek small letters
   static constexpr char const * k_alphaCommand = "alpha";
@@ -133,7 +135,7 @@ private:
   static constexpr char const * k_etaCommand = "eta";
   static constexpr char const * k_thetaCommand = "theta";
   static constexpr char const * k_iotaCommand = "iota";
-  static constexpr char const * k_kappaaCommand = "kappa";
+  static constexpr char const * k_kappaCommand = "kappa";
   static constexpr char const * k_lambdaCommand = "lambda";
   static constexpr char const * k_muCommand = "mu";
   static constexpr char const * k_nuCommand = "nu";
