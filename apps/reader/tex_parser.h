@@ -20,8 +20,9 @@ private:
   Layout popCommand();
   Layout popFracCommand();
   Layout popSqrtCommand();
-  Layout poppiCommand();
-  Layout popthetaCommand();
+  Layout popOverrightarrow();
+  Layout popPiCommand();
+  Layout popThetaCommand();
   const char * m_text;
   const char * m_endOfText;
   bool m_hasError;
@@ -30,6 +31,7 @@ private:
   static constexpr char const * k_sqrtCommand = "sqrt";
   static constexpr char const * k_thetaCommand = "theta";
   static constexpr char const * k_piCommand = "pi";
+  static constexpr char const * k_overRightArrowCommand = "overrightarrow";
 };
   
 }

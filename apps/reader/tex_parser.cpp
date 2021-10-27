@@ -51,6 +51,7 @@ Layout TexParser::popText(char stop) {
   
   while (m_text < m_endOfText && *m_text != stop) {
     switch (*m_text) {
+      // TODO: Factorize this code
       case '\\':
         if (start != m_text) {
           layout.addOrMergeChildAtIndex(LayoutHelper::String(start, m_text - start), layout.numberOfChildren(), false);
@@ -101,28 +102,40 @@ Layout TexParser::popText(char stop) {
 }
 
 Layout TexParser::popCommand() {
+  // TODO: Factorize this code
   if (strncmp(k_fracCommand, m_text, strlen(k_fracCommand)) == 0) {
-    m_text += strlen(k_fracCommand);
-    if (*m_text == ' ' || *m_text == '{') {
+    const char * endOfCommand= m_text + strlen(k_fracCommand);
+    if (*endOfCommand == ' ' || *endOfCommand == '{') {
+      m_text += strlen(k_fracCommand);
       return popFracCommand();
     } 
   }
   else if (strncmp(k_sqrtCommand, m_text, strlen(k_sqrtCommand)) == 0) {
-    m_text += strlen(k_sqrtCommand);
-    if (*m_text == ' ' || *m_text == '{' || *m_text == '[') {
+    const char * endOfCommand= m_text + strlen(k_sqrtCommand);
+    if (*endOfCommand == ' ' || *endOfCommand == '{' || *endOfCommand == '[') {
+      m_text += strlen(k_sqrtCommand);
       return popSqrtCommand();
     }
   }
   else if (strncmp(k_thetaCommand, m_text, strlen(k_thetaCommand)) == 0) {
-    m_text += strlen(k_thetaCommand);
-    if (*m_text == ' ') {
-      return popthetaCommand();
+    const char * endOfCommand = m_text + strlen(k_thetaCommand);
+    if (*endOfCommand == ' ' || *endOfCommand == '\\' || *endOfCommand == '$') {
+      m_text += strlen(k_thetaCommand);
+      return popThetaCommand();
     }
   }
   else if (strncmp(k_piCommand, m_text, strlen(k_piCommand)) == 0) {
-    m_text += strlen(k_piCommand);
-    if (*m_text == ' ') {
-      return poppiCommand();
+    const char * endOfCommand = m_text + strlen(k_piCommand);
+    if (*endOfCommand == ' ' || *endOfCommand == '\\' || *endOfCommand == '$') {
+      m_text += strlen(k_piCommand);
+      return popPiCommand();
+    }
+  }
+  else if (strncmp(k_overRightArrowCommand, m_text, strlen(k_overRightArrowCommand)) == 0) {
+    const char * endOfCommand = m_text + strlen(k_overRightArrowCommand);
+    if (*endOfCommand == ' ' || *endOfCommand == '{' || *endOfCommand == '[') {
+      m_text += strlen(k_overRightArrowCommand);
+      return popOverrightarrow();
     }
   }
   
@@ -131,27 +144,36 @@ Layout TexParser::popCommand() {
 }
 
 Layout TexParser::popFracCommand() {
-  return FractionLayout::Builder(popBlock(), popBlock());
+  Layout numerator = popBlock();
+  Layout denominator = popBlock();
+  FractionLayout l = FractionLayout::Builder(numerator, denominator);
+  return l;
 }
 
 Layout TexParser::popSqrtCommand() {
   while (*m_text == ' ') {
     m_text ++;
   }
-  m_text++;
   if (*m_text == '[') {
-    return NthRootLayout::Builder(popText(']'), popBlock());
+    m_text ++;
+    Layout rootFactor = popText(']');
+    Layout belowRoot = popBlock();
+    return NthRootLayout::Builder(belowRoot, rootFactor);
   }
   else {
     return NthRootLayout::Builder(popBlock());
   }
 }
 
-Layout TexParser::popthetaCommand() {
+Layout TexParser::popOverrightarrow() {
+  return VectorLayout::Builder(popBlock());
+}
+
+Layout TexParser::popThetaCommand() {
   return CodePointLayout::Builder(CodePoint(0x3b8));
 }
 
-Layout TexParser::poppiCommand() {
+Layout TexParser::popPiCommand() {
   return CodePointLayout::Builder(CodePoint(0x3c0));
 }
 
