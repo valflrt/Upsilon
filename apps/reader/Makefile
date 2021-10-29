@@ -1,6 +1,8 @@
 apps += Reader::App
 app_headers += apps/reader/app.h
 
+SFLAGS += -DHAS_READER
+
 app_sreader_src = $(addprefix apps/reader/,\
   app.cpp \
   list_book_controller.cpp \

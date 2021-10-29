@@ -135,6 +135,7 @@ uint32_t CodePoints[] = {
   0x392,   // Β // GREEK CAPITAL LETTER BETA
   0x393,   // Γ // GREEK CAPITAL LETTER GAMMA
   0x394,   // Δ // GREEK CAPITAL LETTER DELTA
+#ifdef HAS_READER
   0x395,   // Ε // GREEK CAPITAL LETTER EPSILON
   0x396,   // Ζ // GREEK CAPITAL LETTER ZETA
   0x397,   // Η // GREEK CAPITAL LETTER ETA
@@ -154,7 +155,9 @@ uint32_t CodePoints[] = {
   0x3a6,   // Φ // GREEK CAPITAL LETTER PHI
   0x3a7,   // Χ // GREEK CAPITAL LETTER KHI
   0x3a8,   // Ψ // GREEK CAPITAL LETTER PSI
+#endif
   0x3a9,   // Ω // GREEK CAPITAL LETTER OMEGA
+#ifdef HAS_READER
   0x3b1,   // α // GREEK SMALL LETTER ALPHA
   0x3b2,   // β // GREEK SMALL LETTER BETA
   0x3b3,   // γ // GREEK SMALL LETTER GAMMA
@@ -162,25 +165,33 @@ uint32_t CodePoints[] = {
   0x3b5,   // ε // GREEK SMALL LETTER EPSILON
   0x3b6,   // ζ // GREEK SMALL LETTER ZETA
   0x3b7,   // η // GREEK SMALL LETTER ETA
+#endif
   0x3b8,   // θ // GREEK SMALL LETTER THETA
+#ifdef HAS_READER
   0x3b9,   // ι // GREEK SMALL LETTER IOTA
   0x3ba,   // κ // GREEK SMALL LETTER KAPPA
   0x3bb,   // λ // GREEK SMALL LETTER LAMBDA
+#endif
   0x3bc,   // μ // GREEK SMALL LETTER MU
+#ifdef HAS_READER
   0x3bd,   // ν // GREEK SMALL LETTER NU
   0x3be,   // ξ // GREEK SMALL LETTER KSI
   0x3bf,   // ο // GREEK SMALL LETTER OMICRON
+#endif
   0x3c0,   // π // GREEK SMALL LETTER PI
   0x3c1,   // ρ // GREEK SMALL LETTER RHO
   0x3c3,   // σ // GREEK SMALL LETTER SIGMA
+#ifdef HAS_READER
   0x3c4,   // τ // GREEK SMALL LETTER TAU
   0x3c5,   // υ // GREEK SMALL LETTER UPSILON
   0x3c6,   // φ // GREEK SMALL LETTER PHI
   0x3c7,   // χ // GREEK SMALL LETTER KHI
   0x3c8,   // ψ // GREEK SMALL LETTER PSI
   0x3c9,   // ω // GREEK SMALL LETTER OMEGA
+#endif
   0x1d07,  // ᴇ // LATIN LETTER SMALL CAPITAL E
   0x212f,  // ℯ // SCRIPT SMALL E
+#ifdef HAS_READER
   0x2190,  // ← // BACKWARD ARROW (leftarrow)
   0x2191,  // ↑ // TOP ARROW (uparrow)
   0x2192,  // → // FORWARD ARROW (rightarrow)
@@ -194,6 +205,7 @@ uint32_t CodePoints[] = {
   0x2200,  // ∀ // FORALL
   0x2202,  // ∂ // PARTIAL
   0x2203,  // ∃ // EXIST
+#endif
   0x2211,  // ∑ // N-ARY SUMMATION
   0x221a,  // √ // SQUARE ROOT
   0x221e,  // ∞ // INFINITY
