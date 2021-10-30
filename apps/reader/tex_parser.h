@@ -30,6 +30,22 @@ private:
   Layout poppartialCommand();
   Layout popexistsCommand();
   Layout poppmCommand();
+  Layout popinftyCommand();
+  Layout popapproxCommand();
+  Layout popneqCommand();
+  Layout popequivCommand();
+
+  // Arrows
+  Layout popleftarrowCommand();
+  Layout popuparrowCommand();
+  Layout poprightarrowCommand();
+  Layout popdownarrowCommand();
+  Layout popleftrightarrowCommand();
+  Layout popupdownarrowCommand();
+  Layout popLeftarrowCommand();
+  Layout popUparrowCommand();
+  Layout popRightarrowCommand();
+  Layout popDownarrowCommand();
 
   // Greek capital letters
 
@@ -98,6 +114,22 @@ private:
   static constexpr char const * k_partialCommand = "partial";
   static constexpr char const * k_existsCommand = "exists";
   static constexpr char const * k_pmCommand = "pm";
+  static constexpr char const * k_inftyCommand = "infty";
+  static constexpr char const * k_approxCommand = "approx";
+  static constexpr char const * k_neqCommand = "neq";
+  static constexpr char const * k_equivCommand = "equiv";
+
+  // Arrows
+  static constexpr char const * k_leftarrowCommand = "leftarrow";
+  static constexpr char const * k_uparrowCommand = "uparrow";
+  static constexpr char const * k_rightarrowCommand = "rightarrow";
+  static constexpr char const * k_downarrowCommand = "downarrow";
+  static constexpr char const * k_leftrightarrowCommand = "leftrightarrow";
+  static constexpr char const * k_updownarrowCommand = "updownarrow";
+  static constexpr char const * k_LeftarrowCommand = "Leftarrow";
+  static constexpr char const * k_UparrowCommand = "Uparrow";
+  static constexpr char const * k_RightarrowCommand = "Rightarrow";
+  static constexpr char const * k_DownarrowCommand = "Downarrow";
   // Greek capital letters
 
   static constexpr char const * k_AlphaCommand = "Alpha";

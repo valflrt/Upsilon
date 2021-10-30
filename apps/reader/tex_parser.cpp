@@ -147,7 +147,92 @@ Layout TexParser::popCommand() {
     m_text += strlen(k_pmCommand);
     if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
       return poppmCommand();
-    }  }
+    }
+  }
+  else if (strncmp(k_inftyCommand, m_text, strlen(k_inftyCommand)) == 0) {
+    m_text += strlen(k_inftyCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popinftyCommand();
+    }
+  }
+  else if (strncmp(k_approxCommand, m_text, strlen(k_approxCommand)) == 0) {
+    m_text += strlen(k_approxCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popapproxCommand();
+    }
+  }
+  else if (strncmp(k_neqCommand, m_text, strlen(k_neqCommand)) == 0) {
+    m_text += strlen(k_neqCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popneqCommand();
+    }
+  }
+  else if (strncmp(k_equivCommand, m_text, strlen(k_equivCommand)) == 0) {
+    m_text += strlen(k_equivCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popequivCommand();
+    }
+  }
+  else if (strncmp(k_leftarrowCommand, m_text, strlen(k_leftarrowCommand)) == 0) {
+    m_text += strlen(k_leftarrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popleftarrowCommand();
+    }
+  }
+  else if (strncmp(k_uparrowCommand, m_text, strlen(k_uparrowCommand)) == 0) {
+    m_text += strlen(k_uparrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popuparrowCommand();
+    }
+  }
+  else if (strncmp(k_rightarrowCommand, m_text, strlen(k_rightarrowCommand)) == 0) {
+    m_text += strlen(k_rightarrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return poprightarrowCommand();
+    }
+  }
+  else if (strncmp(k_downarrowCommand, m_text, strlen(k_downarrowCommand)) == 0) {
+    m_text += strlen(k_downarrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popdownarrowCommand();
+    }
+  }
+  else if (strncmp(k_leftrightarrowCommand, m_text, strlen(k_leftrightarrowCommand)) == 0) {
+    m_text += strlen(k_leftrightarrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popleftrightarrowCommand();
+    }
+  }
+  else if (strncmp(k_updownarrowCommand, m_text, strlen(k_updownarrowCommand)) == 0) {
+    m_text += strlen(k_updownarrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popupdownarrowCommand();
+    }
+  }  
+  else if (strncmp(k_LeftarrowCommand, m_text, strlen(k_LeftarrowCommand)) == 0) {
+    m_text += strlen(k_LeftarrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popLeftarrowCommand();
+    }
+  }
+  else if (strncmp(k_UparrowCommand, m_text, strlen(k_UparrowCommand)) == 0) {
+    m_text += strlen(k_UparrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popUparrowCommand();
+    }
+  }
+  else if (strncmp(k_RightarrowCommand, m_text, strlen(k_RightarrowCommand)) == 0) {
+    m_text += strlen(k_RightarrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popRightarrowCommand();
+    }
+  }
+  else if (strncmp(k_DownarrowCommand, m_text, strlen(k_DownarrowCommand)) == 0) {
+    m_text += strlen(k_DownarrowCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popDownarrowCommand();
+    }
+  }
 
   // Greek capital letters
   else if (strncmp(k_AlphaCommand, m_text, strlen(k_AlphaCommand)) == 0) {
@@ -483,6 +568,62 @@ Layout TexParser::popexistsCommand() {
 
 Layout TexParser::poppmCommand() {
   return CodePointLayout::Builder(CodePoint(0xb1));
+}
+
+Layout TexParser::popapproxCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2248));
+}
+
+Layout TexParser::popinftyCommand() {
+  return CodePointLayout::Builder(CodePoint(0x221e));
+}
+
+Layout TexParser::popneqCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2260));
+}
+
+Layout TexParser::popequivCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2261));
+}
+
+Layout TexParser::popleftarrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2190));
+}
+
+Layout TexParser::popuparrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2191));
+}
+
+Layout TexParser::poprightarrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2192));
+}
+
+Layout TexParser::popdownarrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2193));
+}
+
+Layout TexParser::popleftrightarrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2194));
+}
+
+Layout TexParser::popupdownarrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2195));
+}
+
+Layout TexParser::popLeftarrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x21d0));
+}
+
+Layout TexParser::popUparrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x21d1));
+}
+
+Layout TexParser::popRightarrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x21d2));
+}
+
+Layout TexParser::popDownarrowCommand() {
+  return CodePointLayout::Builder(CodePoint(0x21d3));
 }
 
 // Greek Capital letters
