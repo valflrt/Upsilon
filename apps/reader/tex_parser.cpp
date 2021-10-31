@@ -173,6 +173,19 @@ Layout TexParser::popCommand() {
       return popequivCommand();
     }
   }
+  else if (strncmp(k_leqCommand, m_text, strlen(k_leqCommand)) == 0) {
+    m_text += strlen(k_leqCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popleqCommand();
+    }
+  }
+  else if (strncmp(k_geqCommand, m_text, strlen(k_geqCommand)) == 0) {
+    m_text += strlen(k_geqCommand);
+    if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
+      return popgeqCommand();
+    }
+  }
+  
   else if (strncmp(k_leftarrowCommand, m_text, strlen(k_leftarrowCommand)) == 0) {
     m_text += strlen(k_leftarrowCommand);
     if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
@@ -584,6 +597,14 @@ Layout TexParser::popneqCommand() {
 
 Layout TexParser::popequivCommand() {
   return CodePointLayout::Builder(CodePoint(0x2261));
+}
+
+Layout TexParser::popleqCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2264));
+}
+
+Layout TexParser::popgeqCommand() {
+  return CodePointLayout::Builder(CodePoint(0x2265));
 }
 
 Layout TexParser::popleftarrowCommand() {

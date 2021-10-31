@@ -34,6 +34,8 @@ private:
   Layout popapproxCommand();
   Layout popneqCommand();
   Layout popequivCommand();
+  Layout popleqCommand();  
+  Layout popgeqCommand();
 
   // Arrows
   Layout popleftarrowCommand();
@@ -118,6 +120,9 @@ private:
   static constexpr char const * k_approxCommand = "approx";
   static constexpr char const * k_neqCommand = "neq";
   static constexpr char const * k_equivCommand = "equiv";
+  static constexpr char const * k_leqCommand = "leq";
+  static constexpr char const * k_geqCommand = "geq";
+
 
   // Arrows
   static constexpr char const * k_leftarrowCommand = "leftarrow";
