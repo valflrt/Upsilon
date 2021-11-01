@@ -326,10 +326,10 @@ Layout TexParser::popCommand() {
       return popNuCommand();
     }
   }
-  else if (strncmp(k_KsiCommand, m_text, strlen(k_KsiCommand)) == 0) {
-    m_text += strlen(k_KsiCommand);
+  else if (strncmp(k_XiCommand, m_text, strlen(k_XiCommand)) == 0) {
+    m_text += strlen(k_XiCommand);
     if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
-      return popKsiCommand();
+      return popXiCommand();
     }
   }
   else if (strncmp(k_PiCommand, m_text, strlen(k_PiCommand)) == 0) {
@@ -374,10 +374,10 @@ Layout TexParser::popCommand() {
       return popPhiCommand();
     }
   }
-  else if (strncmp(k_KhiCommand, m_text, strlen(k_KhiCommand)) == 0) {
-    m_text += strlen(k_KhiCommand);
+  else if (strncmp(k_ChiCommand, m_text, strlen(k_ChiCommand)) == 0) {
+    m_text += strlen(k_ChiCommand);
     if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
-      return popKhiCommand();
+      return popChiCommand();
     }
   }
   else if (strncmp(k_PsiCommand, m_text, strlen(k_PsiCommand)) == 0) {
@@ -470,10 +470,10 @@ Layout TexParser::popCommand() {
       return popnuCommand();
     }
   }
-  else if (strncmp(k_ksiCommand, m_text, strlen(k_ksiCommand)) == 0) {
-    m_text += strlen(k_ksiCommand);
+  else if (strncmp(k_xiCommand, m_text, strlen(k_xiCommand)) == 0) {
+    m_text += strlen(k_xiCommand);
     if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
-      return popksiCommand();
+      return popxiCommand();
     }
   }
   else if (strncmp(k_piCommand, m_text, strlen(k_piCommand)) == 0) {
@@ -512,10 +512,10 @@ Layout TexParser::popCommand() {
       return popphiCommand();
     }
   }
-  else if (strncmp(k_khiCommand, m_text, strlen(k_khiCommand)) == 0) {
-    m_text += strlen(k_khiCommand);
+  else if (strncmp(k_chiCommand, m_text, strlen(k_chiCommand)) == 0) {
+    m_text += strlen(k_chiCommand);
     if (*m_text == ' ' || *m_text == '\\' || *m_text == '$') {
-      return popkhiCommand();
+      return popchiCommand();
     }
   }
   else if (strncmp(k_psiCommand, m_text, strlen(k_psiCommand)) == 0) {
@@ -700,7 +700,7 @@ Layout TexParser::popNuCommand(){
   return CodePointLayout::Builder(CodePoint(0x39d));
 }
 
-Layout TexParser::popKsiCommand() {
+Layout TexParser::popXiCommand() {
   return CodePointLayout::Builder(CodePoint(0x39e));
 }
 
@@ -732,7 +732,7 @@ Layout TexParser::popPhiCommand(){
   return CodePointLayout::Builder(CodePoint(0x3a6));
 }
 
-Layout TexParser::popKhiCommand(){
+Layout TexParser::popChiCommand(){
   return CodePointLayout::Builder(CodePoint(0x3a7));
 }
 
@@ -797,7 +797,7 @@ Layout TexParser::popnuCommand(){
   return CodePointLayout::Builder(CodePoint(0x3bd));
 }
 
-Layout TexParser::popksiCommand(){
+Layout TexParser::popxiCommand(){
   return CodePointLayout::Builder(CodePoint(0x3be));
 }
 
@@ -825,7 +825,7 @@ Layout TexParser::popphiCommand(){
   return CodePointLayout::Builder(CodePoint(0x3c6));
 }
 
-Layout TexParser::popkhiCommand(){
+Layout TexParser::popchiCommand(){
   return CodePointLayout::Builder(CodePoint(0x3c7));
 }
 

@@ -64,7 +64,7 @@ private:
   Layout popLambdaCommand();
   Layout popMuCommand();
   Layout popNuCommand();
-  Layout popKsiCommand();
+  Layout popXiCommand();
   Layout popOmicronCommand();
   Layout popPiCommand();
   Layout popRhoCommand();
@@ -72,7 +72,7 @@ private:
   Layout popTauCommand();
   Layout popUpsilonCommand();
   Layout popPhiCommand();
-  Layout popKhiCommand();
+  Layout popChiCommand();
   Layout popPsiCommand();
   Layout popOmegaCommand();
 
@@ -90,14 +90,14 @@ private:
   Layout poplambdaCommand();
   Layout popmuCommand();
   Layout popnuCommand();
-  Layout popksiCommand();
+  Layout popxiCommand();
   Layout poppiCommand();
   Layout poprhoCommand();
   Layout popsigmaCommand();
   Layout poptauCommand();
   Layout popupsilonCommand();
   Layout popphiCommand();
-  Layout popkhiCommand();
+  Layout popchiCommand();
   Layout poppsiCommand();
   Layout popomegaCommand();
 
@@ -150,7 +150,7 @@ private:
   static constexpr char const * k_LambdaCommand = "Lambda";
   static constexpr char const * k_MuCommand = "Mu";
   static constexpr char const * k_NuCommand = "Nu";
-  static constexpr char const * k_KsiCommand = "Ksi";
+  static constexpr char const * k_XiCommand = "Xi";
   static constexpr char const * k_OmicronCommand = "Omicron";
   static constexpr char const * k_PiCommand = "Pi";
   static constexpr char const * k_RhoCommand = "Rho";
@@ -158,7 +158,7 @@ private:
   static constexpr char const * k_TauCommand = "Tau";
   static constexpr char const * k_UpsilonCommand = "Upsilon";
   static constexpr char const * k_PhiCommand = "Phi";
-  static constexpr char const * k_KhiCommand = "Khi";
+  static constexpr char const * k_ChiCommand = "Chi";
   static constexpr char const * k_PsiCommand = "Psi";
   static constexpr char const * k_OmegaCommand = "Omega";
 
@@ -176,7 +176,7 @@ private:
   static constexpr char const * k_lambdaCommand = "lambda";
   static constexpr char const * k_muCommand = "mu";
   static constexpr char const * k_nuCommand = "nu";
-  static constexpr char const * k_ksiCommand = "ksi";
+  static constexpr char const * k_xiCommand = "xi";
   // static constexpr char const * k_omicronCommand = "omicron"; // just write "o" 
   static constexpr char const * k_piCommand = "pi";
   static constexpr char const * k_rhoCommand = "rho";
@@ -184,7 +184,7 @@ private:
   static constexpr char const * k_tauCommand = "tau";
   static constexpr char const * k_upsilonCommand = "upsilon";
   static constexpr char const * k_phiCommand = "phi";
-  static constexpr char const * k_khiCommand = "khi";
+  static constexpr char const * k_chiCommand = "chi";
   static constexpr char const * k_psiCommand = "psi";
   static constexpr char const * k_omegaCommand = "omega";
 
