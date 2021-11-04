@@ -15,7 +15,15 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
+#ifdef ISBUILDINGFLASHER
 #include "code_points.h"
+#else
+#ifdef HAS_READER
+#include "code_points_latex.h"
+#else
+#include "code_points.h"
+#endif
+#endif
 #include "../../ion/src/external/lz4/lz4hc.h"
 
 

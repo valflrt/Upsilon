@@ -106,6 +106,7 @@ uint32_t CodePoints[] = {
   0x7e, // ~ // TILDE
 
   0xb0, // ° // DEGREE SIGN
+  0xb1, // ± // PLUS OR MINUS
   0xb7, // · // MIDDLE DOT
 
   0xc6, // Æ // LATIN CAPITAL LETTER AE
@@ -130,22 +131,76 @@ uint32_t CodePoints[] = {
   0x30b, //  ˝// COMBINING DOUBLE ACUTE ACCENT
   0x327, //  ̧ // COMBINING CEDILLA
 
+  0x391,   // Α // GREEK CAPITAL LETTER ALPHA
+  0x392,   // Β // GREEK CAPITAL LETTER BETA
   0x393,   // Γ // GREEK CAPITAL LETTER GAMMA
   0x394,   // Δ // GREEK CAPITAL LETTER DELTA
+  0x395,   // Ε // GREEK CAPITAL LETTER EPSILON
+  0x396,   // Ζ // GREEK CAPITAL LETTER ZETA
+  0x397,   // Η // GREEK CAPITAL LETTER ETA
+  0x398,   // Θ // GREEK CAPITAL LETTER THETA
+  0x399,   // Ι // GREEK CAPITAL LETTER IOTA
+  0x39a,   // Κ // GREEK CAPITAL LETTER KAPPA
+  0x39b,   // Λ // GREEK CAPITAL LETTER LAMBDA
+  0x39c,   // Μ // GREEK CAPITAL LETTER MU
+  0x39d,   // Ν // GREEK CAPITAL LETTER NU
+  0x39e,   // Ξ // GREEK CAPITAL LETTER KSI
+  0x39f,   // Ο // GREEK CAPITAL LETTER OMICRON
+  0x3a0,   // Π // GREEK CAPITAL LETTER PI
+  0x3a1,   // Ρ // GREEK CAPITAL LETTER RHO
+  0x3a3,   // Σ // GREEK CAPITAL LETTER SIGMA
+  0x3a4,   // Τ // GREEK CAPITAL LETTER TAU
+  0x3a5,   // Υ // GREEK CAPITAL LETTER UPSILON
+  0x3a6,   // Φ // GREEK CAPITAL LETTER PHI
+  0x3a7,   // Χ // GREEK CAPITAL LETTER KHI
+  0x3a8,   // Ψ // GREEK CAPITAL LETTER PSI
   0x3a9,   // Ω // GREEK CAPITAL LETTER OMEGA
+  0x3b1,   // α // GREEK SMALL LETTER ALPHA
+  0x3b2,   // β // GREEK SMALL LETTER BETA
+  0x3b3,   // γ // GREEK SMALL LETTER GAMMA
+  0x3b4,   // δ // GREEK SMALL LETTER DELTA
+  0x3b5,   // ε // GREEK SMALL LETTER EPSILON
+  0x3b6,   // ζ // GREEK SMALL LETTER ZETA
+  0x3b7,   // η // GREEK SMALL LETTER ETA
   0x3b8,   // θ // GREEK SMALL LETTER THETA
-  0x3bb,   // λ // GREEK SMALL LETTER LAMDA
+  0x3b9,   // ι // GREEK SMALL LETTER IOTA
+  0x3ba,   // κ // GREEK SMALL LETTER KAPPA
+  0x3bb,   // λ // GREEK SMALL LETTER LAMBDA
   0x3bc,   // μ // GREEK SMALL LETTER MU
+  0x3bd,   // ν // GREEK SMALL LETTER NU
+  0x3be,   // ξ // GREEK SMALL LETTER KSI
+  0x3bf,   // ο // GREEK SMALL LETTER OMICRON
   0x3c0,   // π // GREEK SMALL LETTER PI
+  0x3c1,   // ρ // GREEK SMALL LETTER RHO
   0x3c3,   // σ // GREEK SMALL LETTER SIGMA
+  0x3c4,   // τ // GREEK SMALL LETTER TAU
+  0x3c5,   // υ // GREEK SMALL LETTER UPSILON
+  0x3c6,   // φ // GREEK SMALL LETTER PHI
+  0x3c7,   // χ // GREEK SMALL LETTER KHI
+  0x3c8,   // ψ // GREEK SMALL LETTER PSI
+  0x3c9,   // ω // GREEK SMALL LETTER OMEGA
   0x1d07,  // ᴇ // LATIN LETTER SMALL CAPITAL E
   0x212f,  // ℯ // SCRIPT SMALL E
-  0x2192,  // → // RIGHTWARDS ARROW
+  0x2190,  // ← // BACKWARD ARROW (leftarrow)
+  0x2191,  // ↑ // TOP ARROW (uparrow)
+  0x2192,  // → // FORWARD ARROW (rightarrow)
+  0x2193,  // ↓ // BOTTOM ARROW (downarrow)
+  0x2194,  // ↔ // BACKWARD FORWARD ARROW (leftrightarrow)
+  0x2195,  // ↕ // TOP BOTTOM ARROW (updownarrow)
+  0x21d0,  // ⇐ // DOUBLE BACKWARD ARROW (Leftarrow)
+  0x21d1,  // ⇑ // DOUBLE TOP ARROW (Uparrow)
+  0x21d2,  // ⇒ // DOUBLE FORWARD ARROW (Rightarrow)
+  0x21d3,  // ⇓ // DOUBLE BOTTOM ARROW (Downarrow)
+  0x2200,  // ∀ // FORALL
+  0x2202,  // ∂ // PARTIAL
+  0x2203,  // ∃ // EXIST
   0x2211,  // ∑ // N-ARY SUMMATION
   0x221a,  // √ // SQUARE ROOT
   0x221e,  // ∞ // INFINITY
   0x222b,  // ∫ // INTEGRAL
   0x2248,  // ≈ // ALMOST EQUAL TO
+  0x2260,  // ≠ // NOT EQUAL TO
+  0x2261,  // ≡ // IS CONGRUENT TO
   0x2264,  // ≤ // LESS-THAN OR EQUAL TO
   0x2265,  // ≥ // GREATER-THAN OR EQUAL TO
   0xFFFD,  // � // REPLACEMENT CHARACTER

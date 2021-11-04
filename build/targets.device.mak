@@ -44,8 +44,8 @@ $(BUILD_DIR)/flasher.light.$(EXE): $(call flavored_object_for,$(flasher_src),lig
 $(BUILD_DIR)/flasher.verbose.$(EXE): $(call flavored_object_for,$(flasher_src),usbxip)
 $(BUILD_DIR)/flasher.verbose.flash.$(EXE): $(call flavored_object_for,$(flasher_src))
 $(BUILD_DIR)/flasher.%.$(EXE): LDFLAGS += -Lion/src/$(PLATFORM)/flasher
-$(BUILD_DIR)/flasher.%.$(EXE): ISBUILDINGFLASHER:=1
 $(BUILD_DIR)/flasher.%.$(EXE): LDSCRIPT = ion/src/$(PLATFORM)/shared/ram.ld
+$(BUILD_DIR)/flasher.%.$(EXE): RASTERIZER_CFLAGS += -DISBUILDINGFLASHER
 $(BUILD_DIR)/flasher.%.flash.$(EXE): LDSCRIPT = ion/src/$(PLATFORM)/$(MODEL)/internal_flash.ld
 
 #TODO Do not build all apps... Put elsewhere?

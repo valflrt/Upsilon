@@ -32,7 +32,15 @@ tests_src += $(addprefix kandinsky/test/,\
   rect.cpp\
 )
 
-code_points = kandinsky/fonts/code_points.h
+ifdef ($(ISBUILDINGFLASHER))
+  code_points = kandinsky/fonts/code_points.h
+else
+  ifdef ($(HAS_READER))
+    code_points = kandinsky/fonts/code_points_latex.h
+  else
+    code_points = kandinsky/fonts/code_points.h
+  endif
+endif
 
 RASTERIZER_CFLAGS := -std=c99 $(shell pkg-config freetype2 --cflags)
 RASTERIZER_LDFLAGS := $(shell pkg-config freetype2 --libs)

@@ -1,11 +1,7 @@
 apps += Reader::App
 app_headers += apps/reader/app.h
 
-ifeq ($(ISBUILDINGFLASHER), 1)
-   $(warning Reduced font glyphs)
-else
-   RASTERIZER_CFLAGS += -DHAS_READER
-endif
+SFLAGS += -DHAS_READER
 
 app_sreader_src = $(addprefix apps/reader/,\
   app.cpp \
