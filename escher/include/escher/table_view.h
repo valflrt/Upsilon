@@ -20,6 +20,7 @@ public:
   virtual void scrollToCell(int i, int j);
   HighlightCell * cellAtLocation(int i, int j);
   void reloadCellAtLocation(int i, int j);
+  void reloadVisibleCells();
 protected:
 #if ESCHER_VIEW_LOGGING
   const char * className() const override;
@@ -34,6 +35,7 @@ protected:
     void setHorizontalCellOverlap(KDCoordinate o) { m_horizontalCellOverlap = o; }
     void setVerticalCellOverlap(KDCoordinate o) { m_verticalCellOverlap = o; }
 
+    void reloadVisibleCells();
     void reloadCellAtLocation(int i, int j);
     HighlightCell * cellAtLocation(int i, int j);
     TableViewDataSource * dataSource();

@@ -10,7 +10,8 @@ FiguresController::FiguresController(Responder * parentResponder):
   m_addFigureCell(),
   m_emptyCell(),
   m_figureTypeController(this, &m_definitionTypeController),
-  m_definitionTypeController(&m_figureTypeController)
+  m_definitionTypeController(&m_figureTypeController, &m_parametersController),
+  m_parametersController(&m_definitionTypeController)
 {
   m_addFigureCell.setMessage(I18n::Message::AddFigure);
 }

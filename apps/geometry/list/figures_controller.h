@@ -6,7 +6,9 @@
 
 namespace Geometry
 {
-
+/**
+ * \brief FiguresController is a controller to show the list of the figures
+ */
 class FiguresController : public ViewController, public SelectableTableViewDataSource, public SelectableTableViewDelegate, public TableViewDataSource {
 public:
   FiguresController(Responder * parentResponder);
@@ -37,6 +39,7 @@ private:
   EvenOddCell m_emptyCell;
   FigureTypeController m_figureTypeController;
   DefinitionTypeController m_definitionTypeController;
+  FigureParametersController m_parametersController;
 };
 
 }

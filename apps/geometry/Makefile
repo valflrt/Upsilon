@@ -3,9 +3,10 @@ app_headers += apps/geometry/app.h
 
 app_geometry_src = $(addprefix apps/geometry/,\
   app.cpp \
-  figures_controller.cpp \
-  definition_type_controller.cpp \
-  figure_type_controller.cpp \
+  list/figures_controller.cpp \
+  list/definition_type_controller.cpp \
+  list/figure_type_controller.cpp \
+  list/figure_parameters_controller.cpp \
 )
 
 apps_src += $(app_geometry_src)

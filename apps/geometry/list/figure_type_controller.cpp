@@ -3,6 +3,11 @@
 
 namespace Geometry {
 
+static FigureType sTypes[] = {
+  FigureType::Point,
+  FigureType::Circle
+};
+
 static I18n::Message sMessages[] = {
   I18n::Message::Point,
   I18n::Message::Circle
@@ -11,16 +16,12 @@ static I18n::Message sMessages[] = {
 FigureTypeController::FigureTypeController(Responder * parentResponder, DefinitionTypeController * definitionTypeController) :
   ViewController(parentResponder),
   m_selectableTableView(this),
-  m_definitionTypeController(definitionTypeController)
+  m_definitionTypeController(definitionTypeController),
+  m_messages(sMessages)
 {
   for (int i = 0; i < k_numberOfCells; i ++) {
     m_cells[i].setMessageFont(KDFont::LargeFont);
   }
-  m_messages = sMessages;
-}
-
-const char * FigureTypeController::title() {
-  return I18n::translate(I18n::Message::FigureType);
 }
 
 void FigureTypeController::viewWillAppear() {
@@ -35,6 +36,7 @@ void FigureTypeController::didBecomeFirstResponder() {
 bool FigureTypeController::handleEvent(Ion::Events::Event event) {
   if (event == Ion::Events::OK || event == Ion::Events::EXE || event == Ion::Events::Right) {
     StackViewController * stack = static_cast<StackViewController *>(parentResponder());
+    m_definitionTypeController->setFigureType(sTypes[selectedRow()]);
     stack->push(m_definitionTypeController);
     return true;
   }

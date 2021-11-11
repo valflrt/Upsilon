@@ -2,7 +2,7 @@
 #define GEOMETRY_H
 
 #include <escher.h>
-#include "figures_controller.h"
+#include "list/figures_controller.h"
 
 namespace Geometry 
 {

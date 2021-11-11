@@ -56,6 +56,10 @@ void TableView::reloadCellAtLocation(int i, int j) {
   m_contentView.reloadCellAtLocation(i, j);
 }
 
+void TableView::reloadVisibleCells() {
+  m_contentView.reloadVisibleCells();
+}
+
 /* TableView::ContentView */
 
 TableView::ContentView::ContentView(TableView * tableView, TableViewDataSource * dataSource, KDCoordinate horizontalCellOverlap, KDCoordinate verticalCellOverlap) :
@@ -163,6 +167,15 @@ View * TableView::ContentView::subviewAtIndex(int index) {
   int type = typeOfSubviewAtIndex(index);
   int typeIndex = typeIndexFromSubviewIndex(index, type);
   return m_dataSource->reusableCell(typeIndex, type);
+}
+
+void TableView::ContentView::reloadVisibleCells() {
+  for (int index = 0; index < numberOfSubviews(); index++) {
+    View * cell = subview(index);
+    int i = absoluteColumnNumberFromSubviewIndex(index);
+    int j = absoluteRowNumberFromSubviewIndex(index);
+    m_dataSource->willDisplayCellAtLocation((HighlightCell *)cell, i, j);
+  }
 }
 
 void TableView::ContentView::layoutSubviews(bool force) {

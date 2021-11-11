@@ -1,25 +1,33 @@
-#ifndef GEOMETRY_DEFINITION_TYPE_CONTROLLER_H
-#define GEOMETRY_DEFINITION_TYPE_CONTROLLER_H
+#ifndef GEOMETRY_FIGURE_TYPE_CONTROLLER_H
+#define GEOMETRY_FIGURE_TYPE_CONTROLLER_H
 
 #include <escher.h>
-#include "apps/i18n.h"
+#include "definition_type_controller.h"
 
 namespace Geometry {
 /**
- * \brief DefinitionTypeController is a controller to choose how the figure is defined
+ * \brief FigureTypeController is a controller that is used to select the type of
+ * figure to be created.
  */
-class DefinitionTypeController : public ViewController, public SimpleListViewDataSource, public SelectableTableViewDataSource {
+class FigureTypeController : public ViewController, public SimpleListViewDataSource, public SelectableTableViewDataSource {
 public:
-  DefinitionTypeController(Responder * parentResponder/*, FigureDefinitionController * definitionController*/);
+  FigureTypeController(Responder * parentResponder, DefinitionTypeController * definitionController);
 
   /* ViewController */
   View * view() override { return &m_selectableTableView; }
-  const char * title() override;
-  
+  // We want to avoid using half of the screen just for titles
+  virtual DisplayParameter displayParameter() override { return DisplayParameter::DoNotShowOwnTitle; } 
+  const char * title() override { return I18n::translate(I18n::Message::FigureType); }
+
+  /* Responder */
   bool handleEvent(Ion::Events::Event event) override;
   void didBecomeFirstResponder() override;
+
+  /* ViewController */
   void viewWillAppear() override;
   TELEMETRY_ID("FigureType");
+
+  /* TableViewDataSource */
   int numberOfRows() const override { return 2; }
   void willDisplayCellForIndex(HighlightCell * cell, int index) override;
   KDCoordinate cellHeight() override { return k_cellHeight; }
@@ -30,8 +38,8 @@ private:
   constexpr static int k_numberOfCells = 2;
   MessageTableCellWithChevron m_cells[k_numberOfCells];
   SelectableTableView m_selectableTableView;
+  DefinitionTypeController * m_definitionTypeController;
   I18n::Message * m_messages;
-  /*FigureDefinitionController * m_FigureDefinitionController;*/
 };
 
 }
