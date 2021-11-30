@@ -169,7 +169,7 @@ Layout TexParser::popCommand() {
   }	
 
   m_hasError = true; 
-  return LayoutHelper::String(m_text, strlen(m_text));
+  return EmptyLayout::Builder();
 }
 
 // Expressions
@@ -207,4 +207,5 @@ Layout TexParser::popSymbolCommand(int SymbolIndex) {
 inline bool TexParser::isCommandEnded(char c) const {
   return !(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z');
 }
+
 }
