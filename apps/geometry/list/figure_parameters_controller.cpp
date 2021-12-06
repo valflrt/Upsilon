@@ -6,7 +6,9 @@ FigureParametersController::FigureParametersController(Responder * parentRespond
   ViewController(parentResponder),
   m_selectableTableView(this)
 {
-
+  for (int i = 0; i < k_choiceCells; i++) {    
+    m_choicesCells[i].setParentResponder(&m_selectableTableView);
+  }
 }
 
 void FigureParametersController::didBecomeFirstResponder() {

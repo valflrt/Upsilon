@@ -12,6 +12,9 @@ public:
   MessageTableCellWithSelector(ToolboxMessageTree * root = nullptr, const KDFont * font = KDFont::SmallFont);
   ToolboxMessageTree * getSelectedMessage() const { return m_selectedMessage; };
   bool handleEvent(Ion::Events::Event event);
+  Responder * responder() override {
+    return this;
+  }
 private:
   ToolboxMessageTree * m_objectsRoot;
   ToolboxMessageTree * m_selectedMessage;

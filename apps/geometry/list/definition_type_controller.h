@@ -3,7 +3,7 @@
 
 #include <escher.h>
 #include "apps/i18n.h"
-#include "../figure_type.h"
+#include "../figure/figure_type.h"
 #include "figure_parameters_controller.h"
 
 namespace Geometry {
