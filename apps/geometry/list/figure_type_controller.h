@@ -28,14 +28,15 @@ public:
   TELEMETRY_ID("FigureType");
 
   /* TableViewDataSource */
-  int numberOfRows() const override { return 2; }
+  int numberOfRows() const override { return k_numberOfRows; }
   void willDisplayCellForIndex(HighlightCell * cell, int index) override;
   KDCoordinate cellHeight() override { return k_cellHeight; }
   HighlightCell * reusableCell(int index) override;
   int reusableCellCount() const override { return k_numberOfCells; }
 private:
   constexpr static KDCoordinate k_cellHeight = Metric::ParameterCellHeight;
-  constexpr static int k_numberOfCells = 2;
+  constexpr static int k_numberOfCells = 5;
+  constexpr static int k_numberOfRows = 5;
   MessageTableCellWithChevron m_cells[k_numberOfCells];
   SelectableTableView m_selectableTableView;
   DefinitionTypeController * m_definitionTypeController;

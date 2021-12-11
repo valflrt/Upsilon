@@ -47,17 +47,13 @@ void TableView::layoutSubviews(bool force) {
    * otherwise the table's size might be miscomputed...
    * FIXME:
    * Finally, this solution is not optimal at all since
-   * layoutSubviews is called twice over m_contentView. */
+    * layoutSubviews is called twice over m_contentView. */
   m_contentView.layoutSubviews(force);
   ScrollView::layoutSubviews(force);
 }
 
 void TableView::reloadCellAtLocation(int i, int j) {
   m_contentView.reloadCellAtLocation(i, j);
-}
-
-void TableView::reloadVisibleCells() {
-  m_contentView.reloadVisibleCells();
 }
 
 /* TableView::ContentView */
@@ -167,15 +163,6 @@ View * TableView::ContentView::subviewAtIndex(int index) {
   int type = typeOfSubviewAtIndex(index);
   int typeIndex = typeIndexFromSubviewIndex(index, type);
   return m_dataSource->reusableCell(typeIndex, type);
-}
-
-void TableView::ContentView::reloadVisibleCells() {
-  for (int index = 0; index < numberOfSubviews(); index++) {
-    View * cell = subview(index);
-    int i = absoluteColumnNumberFromSubviewIndex(index);
-    int j = absoluteRowNumberFromSubviewIndex(index);
-    m_dataSource->willDisplayCellAtLocation((HighlightCell *)cell, i, j);
-  }
 }
 
 void TableView::ContentView::layoutSubviews(bool force) {

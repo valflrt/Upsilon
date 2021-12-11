@@ -1,8 +1,6 @@
 GeometryApp = "Geometry"
 GeometryAppCapital = "GEOMETRY"
 AddFigure = "Ajouter une figure"
-Point = "Point"
-Circle = "Cercle"
 FigureType = "Type de figure"
 DefinitionType = "Définition de la figure"
 ParametersChoice = "Choix des paramètres"

@@ -4,6 +4,7 @@
 #include <escher.h>
 #include "apps/i18n.h"
 #include "message_table_cell_with_selector.h"
+#include "../figures/figure.h"
 
 
 namespace Geometry {
@@ -13,7 +14,8 @@ namespace Geometry {
 class FigureParametersController : public ViewController, public ListViewDataSource, public SelectableTableViewDataSource {
 public:
   FigureParametersController(Responder * parentResponder);
-  
+  // void setFigureBuilder(FigureBuilder figureBuilder) { m_figureBuilder = figureBuilder; }
+
   /* ViewController */
   const char * title() override { return I18n::translate(I18n::Message::ParametersChoice); }
   // We want to avoid using half of the screen just for titles
@@ -46,7 +48,7 @@ private:
   constexpr static int k_choiceCells = 3;
   MessageTableCellWithEditableText m_textCells[k_textCells];
   MessageTableCellWithSelector m_choicesCells[k_choiceCells];
-  
+  // FigureBuilder m_figureBuilder;
 };
 
 }

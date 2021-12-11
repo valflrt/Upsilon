@@ -1,13 +1,17 @@
 #ifndef GEOMETRY_POINT_H
 #define GEOMETRY_POINT_H
 
+#include "figure.h"
 namespace Geometry {
 
 class PointNode : public FigureNode {
-  size_t size() const override { return sizeof(PointNode); }
-}
 
-class Point : public Figure
+};
+
+class Point : public Figure {
+public:
+  Point(const PointNode * n) : Figure(n) {}
+};
 
 }
 

@@ -3,7 +3,7 @@
 
 #include <escher.h>
 #include "apps/i18n.h"
-#include "../figure/figure_type.h"
+#include "../figures/figure_type.h"
 #include "figure_parameters_controller.h"
 
 namespace Geometry {
@@ -29,7 +29,7 @@ public:
   TELEMETRY_ID("FigureType");
 
   /* SelectableTableViewDataSource */
-  int numberOfRows() const override { return 2; }
+  int numberOfRows() const override;
   void willDisplayCellForIndex(HighlightCell * cell, int index) override;
   KDCoordinate cellHeight() override { return k_cellHeight; }
   HighlightCell * reusableCell(int index) override;
@@ -39,7 +39,7 @@ public:
   void setFigureType(FigureType type);
 private:
   constexpr static KDCoordinate k_cellHeight = Metric::ParameterCellHeight;
-  constexpr static int k_numberOfCells = 2;
+  constexpr static int k_numberOfCells = 6;
   MessageTableCellWithChevron m_cells[k_numberOfCells];
   SelectableTableView m_selectableTableView;
   I18n::Message * m_messages;

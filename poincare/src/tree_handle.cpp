@@ -1,7 +1,10 @@
 #include <poincare/tree_handle.h>
 #include <poincare_nodes.h>
+#include <apps/geometry/figures/figures.h>
 #include <poincare_layouts.h>
 #include <poincare/ghost.h>
+
+using namespace Geometry;
 
 namespace Poincare {
 
@@ -376,5 +379,8 @@ template VectorDot TreeHandle::FixedArityBuilder<VectorDot, VectorDotNode>(const
 template VectorNorm TreeHandle::FixedArityBuilder<VectorNorm, VectorNormNode>(const Tuple &);
 template VectorNormLayout TreeHandle::FixedArityBuilder<VectorNormLayout, VectorNormLayoutNode>(const Tuple &);
 template MatrixLayout TreeHandle::NAryBuilder<MatrixLayout, MatrixLayoutNode>(const Tuple &);
+
+// Geometry templates
+template Power TreeHandle::FixedArityBuilder<PointByCoordinates, PointByCoordinatesNode>(const Tuple &);
 
 }

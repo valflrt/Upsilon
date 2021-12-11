@@ -5,12 +5,18 @@ namespace Geometry {
 
 static FigureType sTypes[] = {
   FigureType::Point,
-  FigureType::Circle
+  FigureType::Line,
+  FigureType::Circle,
+  FigureType::Vector,
+  FigureType::Indicator
 };
 
 static I18n::Message sMessages[] = {
   I18n::Message::Point,
-  I18n::Message::Circle
+  I18n::Message::Line,
+  I18n::Message::Circle,
+  I18n::Message::Vector,
+  I18n::Message::Indicator
 };
 
 FigureTypeController::FigureTypeController(Responder * parentResponder, DefinitionTypeController * definitionTypeController) :
@@ -25,7 +31,7 @@ FigureTypeController::FigureTypeController(Responder * parentResponder, Definiti
 }
 
 void FigureTypeController::viewWillAppear() {
-  selectRow(0);
+  //selectRow(0);
 }
 
 void FigureTypeController::didBecomeFirstResponder() {

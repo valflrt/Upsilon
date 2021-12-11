@@ -15,6 +15,6 @@ apps_src += $(app_geometry_src)
 
 app_images += apps/geometry/geometry_icon.png
 
-i18n_files += $(call i18n_without_universal_for,geometry/base)
+i18n_files += $(call i18n_with_universal_for,geometry/base)
 
 $(eval $(call depends_on_image,apps/geometry/app.cpp,apps/geometry/geometry_icon.png))
