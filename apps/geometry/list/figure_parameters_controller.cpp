@@ -4,6 +4,7 @@
 namespace Geometry {
 FigureParametersController::FigureParametersController(Responder * parentResponder): 
   ViewController(parentResponder),
+  m_lastSelectedRow(0),
   m_selectableTableView(this)
 {
   for (int i = 0; i < k_choiceCells; i++) {    
@@ -16,7 +17,7 @@ void FigureParametersController::didBecomeFirstResponder() {
 }
 
 void FigureParametersController::viewWillAppear() {
-  selectRow(0);
+  selectRow(m_lastSelectedRow);
 }
 
 bool FigureParametersController::handleEvent(Ion::Events::Event event) {
@@ -32,14 +33,17 @@ bool FigureParametersController::handleEvent(Ion::Events::Event event) {
 
 /* ListViewDataSource */
 int FigureParametersController::typeAtLocation(int i, int j) {
-  return 0;
+  return m_figureBuilder.parameterTypeAtIndex(j);
 }
 
 int FigureParametersController::reusableCellCount(int type) {
-  return 2;
+  return type == FigureType.Expression ? k_textCells: k_choiceCells;
 }
 
 HighlightCell * FigureParametersController::reusableCell(int index, int type) {
+  if (type == FigureType.Expression) {
+    return &m_textCells[index];
+  }
   return &m_choicesCells[index];
 }
 

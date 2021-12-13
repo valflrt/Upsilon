@@ -381,6 +381,6 @@ template VectorNormLayout TreeHandle::FixedArityBuilder<VectorNormLayout, Vector
 template MatrixLayout TreeHandle::NAryBuilder<MatrixLayout, MatrixLayoutNode>(const Tuple &);
 
 // Geometry templates
-template Power TreeHandle::FixedArityBuilder<PointByCoordinates, PointByCoordinatesNode>(const Tuple &);
+template PointByCoordinates TreeHandle::FixedArityBuilder<PointByCoordinates, PointByCoordinatesNode>(const Tuple &);
 
 }

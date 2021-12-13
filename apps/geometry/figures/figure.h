@@ -9,9 +9,7 @@ namespace Geometry {
 
 class FigureNode : public TreeNode {
 public:
-  FigureNode();
-  
-  virtual size_t size() const override;
+  virtual size_t size() const override = 0;
 
   virtual int numberOfChildren() const override { return 0; }
 

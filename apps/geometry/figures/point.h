@@ -5,7 +5,7 @@
 namespace Geometry {
 
 class PointNode : public FigureNode {
-
+  
 };
 
 class Point : public Figure {

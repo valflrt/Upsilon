@@ -14,7 +14,7 @@ namespace Geometry {
 class FigureParametersController : public ViewController, public ListViewDataSource, public SelectableTableViewDataSource {
 public:
   FigureParametersController(Responder * parentResponder);
-  // void setFigureBuilder(FigureBuilder figureBuilder) { m_figureBuilder = figureBuilder; }
+  void setFigureBuilder(FigureBuilder figureBuilder) { m_figureBuilder = figureBuilder; }
 
   /* ViewController */
   const char * title() override { return I18n::translate(I18n::Message::ParametersChoice); }
@@ -46,9 +46,10 @@ private:
   SelectableTableView m_selectableTableView;
   constexpr static int k_textCells = 2;
   constexpr static int k_choiceCells = 3;
+  int m_lastSelectedRow;
   MessageTableCellWithEditableText m_textCells[k_textCells];
   MessageTableCellWithSelector m_choicesCells[k_choiceCells];
-  // FigureBuilder m_figureBuilder;
+  FigureBuilder m_figureBuilder;
 };
 
 }

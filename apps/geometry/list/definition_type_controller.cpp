@@ -48,6 +48,7 @@ static const uint8_t sIndicatorDefinitionsMessagesCount = sizeof(sIndicatorDefin
 
 DefinitionTypeController::DefinitionTypeController(Responder * parentResponder, FigureParametersController * parametersController):
   ViewController(parentResponder),
+  m_lastSelectedRow(0),
   m_selectableTableView(this),
   m_messages(nullptr),
   m_figureType(FigureType::None),
@@ -60,8 +61,8 @@ DefinitionTypeController::DefinitionTypeController(Responder * parentResponder, 
 
 void DefinitionTypeController::viewWillAppear() {
   assert(m_figureType != FigureType::None && m_messages != nullptr);
+  selectRow(m_lastSelectedRow);
   m_selectableTableView.reloadData(); // We reload the cell of the table view to update their message
-  selectRow(0);
 }
 
 void DefinitionTypeController::didBecomeFirstResponder() {
@@ -71,8 +72,9 @@ void DefinitionTypeController::didBecomeFirstResponder() {
 
 bool DefinitionTypeController::handleEvent(Ion::Events::Event event) {
   if (event == Ion::Events::OK || event == Ion::Events::EXE || event == Ion::Events::Right) {
+    m_lastSelectedRow = selectedRow();
     StackViewController * stack = static_cast<StackViewController *>(parentResponder());
-    //m_parametersController->setFigureBuilder(PointByCoordinatesBuilder());
+    m_parametersController->setFigureBuilder(PointByCoordinatesBuilder());
     stack->push(m_parametersController);
     return true;
   }

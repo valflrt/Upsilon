@@ -21,6 +21,7 @@ static I18n::Message sMessages[] = {
 
 FigureTypeController::FigureTypeController(Responder * parentResponder, DefinitionTypeController * definitionTypeController) :
   ViewController(parentResponder),
+  m_lastSelectedRow(0),
   m_selectableTableView(this),
   m_definitionTypeController(definitionTypeController),
   m_messages(sMessages)
@@ -31,7 +32,7 @@ FigureTypeController::FigureTypeController(Responder * parentResponder, Definiti
 }
 
 void FigureTypeController::viewWillAppear() {
-  //selectRow(0);
+  selectRow(m_lastSelectedRow);
 }
 
 void FigureTypeController::didBecomeFirstResponder() {
@@ -41,6 +42,7 @@ void FigureTypeController::didBecomeFirstResponder() {
 
 bool FigureTypeController::handleEvent(Ion::Events::Event event) {
   if (event == Ion::Events::OK || event == Ion::Events::EXE || event == Ion::Events::Right) {
+    m_lastSelectedRow = selectedRow();
     StackViewController * stack = static_cast<StackViewController *>(parentResponder());
     m_definitionTypeController->setFigureType(sTypes[selectedRow()]);
     stack->push(m_definitionTypeController);

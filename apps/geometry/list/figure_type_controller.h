@@ -37,6 +37,7 @@ private:
   constexpr static KDCoordinate k_cellHeight = Metric::ParameterCellHeight;
   constexpr static int k_numberOfCells = 5;
   constexpr static int k_numberOfRows = 5;
+  int m_lastSelectedRow;
   MessageTableCellWithChevron m_cells[k_numberOfCells];
   SelectableTableView m_selectableTableView;
   DefinitionTypeController * m_definitionTypeController;
