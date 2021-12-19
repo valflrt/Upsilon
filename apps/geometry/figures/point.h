@@ -5,7 +5,7 @@
 namespace Geometry {
 
 class PointNode : public FigureNode {
-  
+  virtual FigureType type() const override { return FigureType::Point; }
 };
 
 class Point : public Figure {

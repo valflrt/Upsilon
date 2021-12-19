@@ -8,12 +8,15 @@ enum class FigureType {
     Expression, // It's not a real figure type but we use it to build figures like points
     
     Point,
-    PointByCoordinates,
 
     Line,
     Circle,
     Vector,
     Indicator
+};
+
+enum class FigureDefinitionType {
+    PointByCoordinates
 };
 
 }

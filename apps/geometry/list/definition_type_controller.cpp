@@ -74,7 +74,7 @@ bool DefinitionTypeController::handleEvent(Ion::Events::Event event) {
   if (event == Ion::Events::OK || event == Ion::Events::EXE || event == Ion::Events::Right) {
     m_lastSelectedRow = selectedRow();
     StackViewController * stack = static_cast<StackViewController *>(parentResponder());
-    m_parametersController->setFigureBuilder(PointByCoordinatesBuilder());
+    m_parametersController->setParametersInfoFunctions(PointByCoordinates::numberOfParameters, PointByCoordinates::parameterTypeAtIndex);
     stack->push(m_parametersController);
     return true;
   }

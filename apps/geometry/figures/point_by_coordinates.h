@@ -10,8 +10,7 @@ class PointByCoordinatesNode : public PointNode {
 public:
   virtual size_t size() const override { return sizeof(PointByCoordinatesNode); }
   virtual int numberOfChildren() const override { return 2; }
-  virtual FigureType type() const override { return FigureType::Point; }
-  virtual FigureType subtype() const override { return FigureType::PointByCoordinates; }
+  virtual FigureDefinitionType definitionType() const override { return FigureDefinitionType::PointByCoordinates; }
 #if POINCARE_TREE_LOG
   void logNodeName(std::ostream & stream) const override {
     stream << "PointByCoordinates";
@@ -23,16 +22,10 @@ class PointByCoordinates : public Figure {
 public:
   PointByCoordinates(const PointByCoordinatesNode * n) : Figure(n) {}
   static PointByCoordinates Builder(Expression x, Expression y) { return TreeHandle::FixedArityBuilder<PointByCoordinates, PointByCoordinatesNode>({x, x}); }
-
+  static int numberOfParameters() { return 2; }
+  static FigureType parameterTypeAtIndex(int i) { return FigureType::Expression; }
 };
 
-class PointByCoordinatesBuilder : public FigureBuilder {
-public:
-  virtual int numberOfParameters() const override { return 2; }
-  virtual FigureType parameterTypeAtIndex() const override { return FigureType::Expression; }
-private:
-  Expression m_x;
-  Expression m_y;
-};
+}
 
 #endif

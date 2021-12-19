@@ -14,18 +14,12 @@ public:
   virtual int numberOfChildren() const override { return 0; }
 
   virtual FigureType type() const = 0;
-  virtual FigureType subtype() const = 0;
+  virtual FigureDefinitionType definitionType() const = 0;
 };
 
 class Figure : public TreeHandle {
 public:
   Figure(const FigureNode * node) : TreeHandle(node) {}
-};
-
-class FigureBuilder {
-public:
-  virtual int numberOfParameters() const = 0;
-  virtual FigureType parameterTypeAtIndex() const = 0;
 };
 
 }

@@ -33,7 +33,7 @@ App::Descriptor * App::Snapshot::descriptor()
 }
 
 App::App(Snapshot * snapshot) :
-  ::App(snapshot, &m_stackViewController),
+  TextFieldDelegateApp(snapshot, &m_stackViewController),
   m_figuresController(&m_stackViewController),
   m_stackViewController(&m_modalViewController, &m_figuresController)
 {

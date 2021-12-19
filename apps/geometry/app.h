@@ -3,11 +3,12 @@
 
 #include <escher.h>
 #include "list/figures_controller.h"
+#include "../shared/text_field_delegate_app.h"
 
 namespace Geometry 
 {
 
-class App : public ::App 
+class App : public Shared::TextFieldDelegateApp
 {
 public:
   class Descriptor : public ::App::Descriptor 
