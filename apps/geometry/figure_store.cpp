@@ -1,0 +1,1 @@
+#include "figure_store.h"

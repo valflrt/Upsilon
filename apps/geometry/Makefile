@@ -9,6 +9,7 @@ app_geometry_src = $(addprefix apps/geometry/,\
   list/figure_parameters_controller.cpp \
   list/objects_controller.cpp \
   list/message_table_cell_with_selector.cpp \
+  figure_store.cpp \
 )
 
 apps_src += $(app_geometry_src)

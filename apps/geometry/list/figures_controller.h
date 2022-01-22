@@ -13,7 +13,7 @@ class FiguresController : public ViewController, public SelectableTableViewDataS
 public:
   FiguresController(Responder * parentResponder);
 
-  /* ViewController */ 
+  /* ViewController */
   View * view() override { return &m_selectableTableView; }
 
   /* Responder */
@@ -43,4 +43,4 @@ private:
 };
 
 }
-#endif 
+#endif

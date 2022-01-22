@@ -5,7 +5,7 @@
 #include "point.h"
 
 namespace Geometry {
-    
+
 class PointByCoordinatesNode : public PointNode {
 public:
   virtual size_t size() const override { return sizeof(PointByCoordinatesNode); }
