@@ -1,3 +1,6 @@
+FiguresTab = "Figures"
+NoFigures = "Aucune figure à dessiner"
+OtherTab = "TODO"
 Coordinates = "Coordonnées"
 Middle = "Milieu"
 VectorProject = "Projeté vectoriel"

@@ -15,7 +15,8 @@ public:
 
   /* ViewController */
   View * view() override { return &m_selectableTableView; }
-
+  const char * title() override { return I18n::translate(I18n::Message::FiguresTab); }
+  virtual DisplayParameter displayParameter() override { return DisplayParameter::DoNotShowOwnTitle; }
   /* Responder */
   bool handleEvent(Ion::Events::Event event) override; // TO IMPLEMENT
   void didBecomeFirstResponder() override;

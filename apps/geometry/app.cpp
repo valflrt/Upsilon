@@ -33,9 +33,15 @@ App::Descriptor * App::Snapshot::descriptor()
 }
 
 App::App(Snapshot * snapshot) :
-  TextFieldDelegateApp(snapshot, &m_stackViewController),
+  TextFieldDelegateApp(snapshot, &m_tabViewController),
   m_figuresController(&m_stackViewController),
-  m_stackViewController(&m_modalViewController, &m_figuresController)
+  m_stackViewController(&m_tabViewController, &m_figuresController),
+  m_graphController(&m_graphAlternateEmptyViewController),
+  m_graphAlternateEmptyViewController(&m_graphHeader, &m_graphController, &m_graphController),
+  m_graphHeader(&m_graphStackViewController, &m_graphAlternateEmptyViewController, &m_graphController),
+  m_graphStackViewController(&m_tabViewController, &m_graphHeader),
+  m_otherViewController(&m_tabViewController),
+  m_tabViewController(&m_modalViewController, snapshot, &m_stackViewController, &m_graphAlternateEmptyViewController, &m_otherViewController)
 {
 }
 
