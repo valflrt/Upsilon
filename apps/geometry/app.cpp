@@ -36,7 +36,7 @@ App::App(Snapshot * snapshot) :
   TextFieldDelegateApp(snapshot, &m_tabViewController),
   m_figuresController(&m_stackViewController),
   m_stackViewController(&m_tabViewController, &m_figuresController),
-  m_graphController(&m_graphAlternateEmptyViewController),
+  m_graphController(&m_graphAlternateEmptyViewController, this, &m_graphHeader, nullptr, nullptr, nullptr),
   m_graphAlternateEmptyViewController(&m_graphHeader, &m_graphController, &m_graphController),
   m_graphHeader(&m_graphStackViewController, &m_graphAlternateEmptyViewController, &m_graphController),
   m_graphStackViewController(&m_tabViewController, &m_graphHeader),

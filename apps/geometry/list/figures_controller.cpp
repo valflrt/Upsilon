@@ -24,6 +24,12 @@ bool FiguresController::handleEvent(Ion::Events::Event event) {
       return true;
     }
   }
+  if (event == Ion::Events::Up && selectedRow() == 0) {
+    m_selectableTableView.deselectTable();
+    assert(selectedRow() == -1);
+    Container::activeApp()->setFirstResponder(parentResponder()->parentResponder());
+    return true;
+  }
   return false;
 }
 
