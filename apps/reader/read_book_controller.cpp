@@ -55,7 +55,7 @@ void ReadBookController::loadPosition() {
   else {
     m_readerView.setBookSave({
       0,
-      Palette::PrimaryText
+      *Palette::PrimaryText
     });
   }
 }

@@ -71,17 +71,7 @@ def get_data(theme, path):
     return data
 
 
-def write_palette_h(data, file_p):
-    """
-    Write the header to file_p
-    """
-    file_p.write("#ifndef ESCHER_PALETTE_H\n")
-    file_p.write("#define ESCHER_PALETTE_H\n\n")
-    file_p.write("#include <kandinsky/color.h>\n")
-    file_p.write("#include <stddef.h>\n\n")
-    file_p.write("class Palette {\n")
-    file_p.write("public:\n")
-
+def make_palette(data):
     # Default values - sometimes never used
     defaults = {
         "YellowDark": "ffb734",
@@ -115,34 +105,71 @@ def write_palette_h(data, file_p):
         "Cyan": "00ffff",
     }
 
+    palette = []
+
     for key in data["colors"].keys():
         if type(data["colors"][key]) is str:
-            file_p.write("  constexpr static KDColor " + key + " = KDColor::RGB24(0x" + data["colors"][key] + ");\n")
+            palette.append((key, data["colors"][key]))
             if defaults.keys().__contains__(key):
                 del defaults[key]
         else:
             for sub_key in data["colors"][key].keys():
-                file_p.write("  constexpr static KDColor " + key + sub_key + " = KDColor::RGB24(0x" + data["colors"][key][sub_key] + ");\n")
+                palette.append((key + sub_key, data["colors"][key][sub_key]))
             if defaults.keys().__contains__(key+sub_key):
                 del defaults[key+sub_key]
-
     for key in defaults.keys():
-        file_p.write("  constexpr static KDColor " + key + " = KDColor::RGB24(0x" + defaults[key] + ");\n")
+        palette.append((key, defaults[key]))
 
-    file_p.write("  constexpr static KDColor DataColor[] = {Red, Blue, Green, YellowDark, Magenta, Turquoise, Pink, Orange};\n")
-    file_p.write("  constexpr static KDColor DataColorLight[] = {RedLight, BlueLight, GreenLight, YellowLight};\n")
+    return palette
 
-    file_p.write("  constexpr static KDColor AtomColor[] = {\n")
-    file_p.write("    AtomUnknown, AtomAlkaliMetal, AtomAlkaliEarthMetal, AtomLanthanide, AtomActinide, AtomTransitionMetal,\n")
-    file_p.write("    AtomPostTransitionMetal, AtomMetalloid, AtomHalogen, AtomReactiveNonmetal, AtomNobleGas\n")
-    file_p.write("  };\n\n")
+def write_palette_h(palette, file_p):
+    """
+    Write the header to file_p
+    """
+    file_p.write("#ifndef ESCHER_PALETTE_H\n")
+    file_p.write("#define ESCHER_PALETTE_H\n\n")
+    file_p.write("#include <kandinsky/color.h>\n")
+    file_p.write("#include <stddef.h>\n\n")
+    file_p.write("class Palette {\n")
+    file_p.write("public:\n")
 
-    file_p.write("  constexpr static size_t numberOfDataColors() { return sizeof(DataColor)/sizeof(KDColor); }\n")
-    file_p.write("  constexpr static size_t numberOfLightDataColors() { return sizeof(DataColorLight)/sizeof(KDColor); }\n")
+    file_p.write(f"  static KDColor const palette[" + str(len(palette)) + "];")
+
+    for name, color in palette:
+        file_p.write(f"\n  static KDColor const * {name};")
+
+    file_p.write("  static KDColor const * DataColor[8];\n")
+    file_p.write("  static KDColor const * DataColorLight[4];\n")
+    file_p.write("  static KDColor const * AtomColor[11];\n")
+
+    file_p.write("  const static size_t numberOfDataColors() { return 8; }\n")
+    file_p.write("  const static size_t numberOfLightDataColors() { return 4; }\n")
     file_p.write("  static KDColor nextDataColor(int * colorIndex);\n")
-    file_p.write("};\n\n")
 
+    file_p.write("};\n\n")
     file_p.write("#endif\n")
+
+def write_palette_cpp(palette, file_p):
+    file_p.write("#include \"palette.h\"\n\n")
+
+    file_p.write("KDColor const Palette::palette[" + str(len(palette)) + "] = {")
+
+    for name, color in palette:
+        file_p.write("KDColor::RGB24(0x" + color + "), ")
+
+    file_p.write("  };\n")
+
+    for index, (name, color) in enumerate(palette):
+        file_p.write(f"KDColor const * Palette::" + name + " = Palette::palette + " + str(index) + ";\n")
+
+
+    file_p.write("KDColor const * Palette::DataColor[] = {Red, Blue, Green, YellowDark, Magenta, Turquoise, Pink, Orange};\n")
+    file_p.write("KDColor const * Palette::DataColorLight[] = {RedLight, BlueLight, GreenLight, YellowLight};\n")
+
+    file_p.write("KDColor const * Palette::AtomColor[] = {\n")
+    file_p.write("  AtomUnknown, AtomAlkaliMetal, AtomAlkaliEarthMetal, AtomLanthanide, AtomActinide, AtomTransitionMetal,\n")
+    file_p.write("  AtomPostTransitionMetal, AtomMetalloid, AtomHalogen, AtomReactiveNonmetal, AtomNobleGas\n")
+    file_p.write("};\n\n")
 
 
 def handle_git(args):
@@ -180,11 +207,18 @@ def handle_theme(args, path):
             print(" (!!)   Icon " + icons[args.output.replace(args.build_dir, "")] + " not found in icon theme " + data["icons"] + ". Using default!")
             shutil.copyfile(args.output.replace(args.build_dir, ""), args.output)
     else:
+        palette = make_palette(data)
         if (args.stdout):
-            write_palette_h(data, sys.stdout)
+            if args.cpp:
+                write_palette_cpp(palette, sys.stdout)
+            elif args.header:
+                write_palette_h(palette, sys.stdout)
         else:
             with open(args.output, "w") as palette_file:
-                write_palette_h(data, palette_file)
+                if args.cpp:
+                    write_palette_cpp(palette, palette_file)
+                elif args.header:
+                    write_palette_h(palette, palette_file)
 
 
 def main(args):
@@ -221,6 +255,8 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--list", help="list locals themes", action="store_true")
     parser.add_argument("-i", "--icon", help="outputs an icon instead of a header", action="store_true")
     parser.add_argument("--stdout", help="print palette.h to stdout", action="store_true")
+    parser.add_argument("--header", help="generate an header", action="store_true")
+    parser.add_argument("--cpp", help="generate a cpp file", action="store_true")
 
     args = parser.parse_args()
     main(args)

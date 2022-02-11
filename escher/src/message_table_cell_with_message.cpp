@@ -25,7 +25,7 @@ View * MessageTableCellWithMessage::accessoryView() const {
 
 void MessageTableCellWithMessage::setHighlighted(bool highlight) {
   MessageTableCell::setHighlighted(highlight);
-  KDColor backgroundColor = isHighlighted()? Palette::ListCellBackgroundSelected : Palette::ListCellBackground;
+  KDColor backgroundColor = isHighlighted()? *Palette::ListCellBackgroundSelected : *Palette::ListCellBackground;
   m_accessoryView.setBackgroundColor(backgroundColor);
 }
 

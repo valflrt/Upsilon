@@ -73,7 +73,7 @@ Controller::Controller(Responder * parentResponder, SelectableTableViewDataSourc
     m_cells[i].setBackgroundView(m_view.backgroundView());
   }
 
-  m_view.backgroundView()->setDefaultColor(Palette::HomeBackground);
+  m_view.backgroundView()->setDefaultColor(*Palette::HomeBackground);
 
       
 #ifdef HOME_DISPLAY_EXTERNALS

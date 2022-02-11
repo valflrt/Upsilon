@@ -112,7 +112,7 @@ void MultipleDataView::layoutBanner(bool force) {
 
 void MultipleDataView::drawRect(KDContext * ctx, KDRect rect) const {
   if (!m_displayBanner) {
-    ctx->fillRect(bannerFrame(), Palette::BackgroundHard);
+    ctx->fillRect(bannerFrame(), *Palette::BackgroundHard);
   }
 }
 

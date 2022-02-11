@@ -13,17 +13,17 @@ static I18n::Message sUSBConnectedMessages[] = {
   I18n::Message::ConnectedMessage5,
   I18n::Message::ConnectedMessage6};
 
-static KDColor sUSBConnectedFGColors[] = {
+static KDColor const * sUSBConnectedFGColors[] = {
   Palette::PrimaryText,
   Palette::PrimaryText,
   Palette::PrimaryText,
   Palette::AccentText,
-  KDColorWhite,
+  &KDColorWhite,
   Palette::PrimaryText,
   Palette::PrimaryText,
   Palette::PrimaryText};
 
-static KDColor sUSBConnectedBGColors[] = {
+static KDColor const * sUSBConnectedBGColors[] = {
     Palette::BackgroundHard,
     Palette::BackgroundHard,
     Palette::BackgroundHard,

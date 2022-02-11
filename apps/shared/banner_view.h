@@ -12,9 +12,9 @@ public:
   KDSize minimalSizeForOptimalDisplay() const override;
   KDCoordinate minimalHeightForOptimalDisplayGivenWidth(KDCoordinate width) const;
   void reload() { layoutSubviews(); }
-  static constexpr const KDFont * Font() { return KDFont::SmallFont; }
-  static constexpr KDColor TextColor() { return Palette::PrimaryText; }
-  static constexpr KDColor BackgroundColor() { return Palette::SubMenuBackground; }
+  static const KDFont * Font() { return KDFont::SmallFont; }
+  static const KDColor TextColor() { return *Palette::PrimaryText; }
+  static const KDColor BackgroundColor() { return *Palette::SubMenuBackground; }
 private:
   static constexpr KDCoordinate LineSpacing = 2;
   int numberOfSubviews() const override = 0;

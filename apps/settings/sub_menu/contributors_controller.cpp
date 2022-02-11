@@ -9,7 +9,7 @@ ContributorsController::ContributorsController(Responder * parentResponder) :
   for (int i = 0; i < k_totalNumberOfCell; i++) {
     m_cells[i].setMessageFont(KDFont::LargeFont);
     m_cells[i].setAccessoryFont(KDFont::SmallFont);
-    m_cells[i].setAccessoryTextColor(Palette::SecondaryText);
+    m_cells[i].setAccessoryTextColor(*Palette::SecondaryText);
   }
 }
 
@@ -64,15 +64,15 @@ void ContributorsController::willDisplayCellForIndex(HighlightCell * cell, int i
     myTextCell->setTextColor(KDColor::RGB24(0xC03535));
   } else if (index > 0 && index <= s_numberOfDevelopers) {
     myTextCell->setAccessoryText(I18n::translate(s_developersUsernames[index - 1]));
-    myTextCell->setTextColor(Palette::PrimaryText);
+    myTextCell->setTextColor(*Palette::PrimaryText);
   } else if (index == s_numberOfDevelopers + 1) {
     myTextCell->setAccessoryText("");
     myTextCell->setTextColor(KDColor::RGB24(0x1ABC9A));
   } else {
     myTextCell->setAccessoryText(I18n::translate(s_betaTestersUsernames[index - 2 - s_numberOfDevelopers]));
-    myTextCell->setTextColor(Palette::PrimaryText);
+    myTextCell->setTextColor(*Palette::PrimaryText);
   }
-  myTextCell->setAccessoryTextColor(Palette::SecondaryText);
+  myTextCell->setAccessoryTextColor(*Palette::SecondaryText);
   GenericSubController::willDisplayCellForIndex(cell, index);
 }
 

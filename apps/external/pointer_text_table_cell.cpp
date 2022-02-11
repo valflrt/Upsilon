@@ -19,7 +19,7 @@ const char * PointerTextTableCell::text() const {
 
 void PointerTextTableCell::setHighlighted(bool highlight) {
   HighlightCell::setHighlighted(highlight);
-  KDColor backgroundColor = highlight? Palette::ListCellBackgroundSelected : Palette::ListCellBackground;
+  KDColor backgroundColor = highlight? *Palette::ListCellBackgroundSelected : *Palette::ListCellBackground;
   m_pointerTextView.setBackgroundColor(backgroundColor);
 }
 

@@ -19,6 +19,7 @@ kandinsky_src += $(addprefix kandinsky/src/,\
   postprocess_invert_context.cpp \
   postprocess_zoom_context.cpp \
   rect.cpp \
+  theme_buffer.cpp \
 )
 
 kandinsky_src += $(addprefix kandinsky/fonts/, \

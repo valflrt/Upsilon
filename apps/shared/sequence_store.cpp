@@ -32,7 +32,7 @@ Ion::Storage::Record::ErrorStatus SequenceStore::addEmptyModel() {
   assert(name);
   // Choose the corresponding color
   assert(nameIndex < Palette::numberOfDataColors());
-  KDColor color = Palette::DataColor[nameIndex];
+  KDColor color = *Palette::DataColor[nameIndex];
   Sequence::RecordDataBuffer data(color);
   // m_sequences
   return Ion::Storage::sharedStorage()->createRecordWithExtension(name, modelExtension(), &data, sizeof(data));

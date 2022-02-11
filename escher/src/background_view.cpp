@@ -22,7 +22,7 @@ struct OBMHeader
 BackgroundView::BackgroundView():
   m_data(nullptr),
   m_isDataValid(false),
-  m_defaultColor(Palette::BackgroundHard)
+  m_defaultColor(*Palette::BackgroundHard)
 {
 
 }

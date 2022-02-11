@@ -11,7 +11,7 @@ namespace Calculation {
 class ExpressionWithEqualSignView : public ExpressionView {
 public:
   ExpressionWithEqualSignView() :
-    m_equalSign(KDFont::LargeFont, I18n::Message::Equal, 0.5f, 0.5f, Palette::PrimaryText)
+    m_equalSign(KDFont::LargeFont, I18n::Message::Equal, 0.5f, 0.5f, *Palette::PrimaryText)
   {}
   KDSize minimalSizeForOptimalDisplay() const override;
   void drawRect(KDContext * ctx, KDRect rect) const override;

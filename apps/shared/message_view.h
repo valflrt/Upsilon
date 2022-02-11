@@ -5,7 +5,7 @@
 
 class MessageView : public View {
 public:
-  MessageView(I18n::Message * messages, KDColor * fgcolors, KDColor * bgcolors, uint8_t numberOfMessages);
+  MessageView(I18n::Message * messages, KDColor const * fgcolors[], KDColor const * bgcolors [], uint8_t numberOfMessages);
   void drawRect(KDContext * ctx, KDRect rect) const override;
 protected:
   int numberOfSubviews() const override { return m_numberOfMessages; }

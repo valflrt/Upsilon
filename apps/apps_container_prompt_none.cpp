@@ -2,8 +2,8 @@
 
 I18n::Message AppsContainer::k_promptMessages[] = {};
 
-KDColor AppsContainer::k_promptFGColors[] = {};
-KDColor AppsContainer::k_promptBGColors[] = {};
+KDColor const * AppsContainer::k_promptFGColors[] = {};
+KDColor const * AppsContainer::k_promptBGColors[] = {};
 
 int AppsContainer::k_promptNumberOfMessages = 0;
 

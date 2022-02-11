@@ -90,40 +90,40 @@ void MainController::willDisplayCellForIndex(HighlightCell * cell, int index) {
     #if defined(DEVICE_N0100) && !defined(EXTERNAL_BUILTIN)
       if(index == 0){
         myTextCell->setText(I18n::translate(I18n::Message::ExternalNotCompatible));
-        myTextCell->setTextColor(Palette::Red);
+        myTextCell->setTextColor(*Palette::Red);
       } else {
         myTextCell->setText(I18n::translate(I18n::Message::WithN0100));
-        myTextCell->setTextColor(Palette::Red);
+        myTextCell->setTextColor(*Palette::Red);
       }
     #else
       if(index == k_numberOfCells-1){
         myTextCell->setText(I18n::translate(I18n::Message::URL));
-        myTextCell->setTextColor(Palette::AccentText);
+        myTextCell->setTextColor(*Palette::AccentText);
         return;
       }
       if(index == k_numberOfCells-2){
         myTextCell->setText(I18n::translate(I18n::Message::GetMoreAppsAt));
-        myTextCell->setTextColor(Palette::AccentText);
+        myTextCell->setTextColor(*Palette::AccentText);
         return;
       }
       if(index == 0 && numberOfFiles() == 0){
         myTextCell->setText(I18n::translate(I18n::Message::NoAppsInstalled));
-        myTextCell->setTextColor(Palette::Red);
+        myTextCell->setTextColor(*Palette::Red);
       }
       if(numberOfFiles() > 0){
         if(fileAtIndex(index, f)) {
           myTextCell->setText(f.name);
-          myTextCell->setTextColor(f.isExecutable ? Palette::PrimaryText : Palette::Palette::SecondaryText);
+          myTextCell->setTextColor(f.isExecutable ? *Palette::PrimaryText : *Palette::Palette::SecondaryText);
         }
       }
     #endif
   #else
   if(index == 0){
     myTextCell->setText(I18n::translate(I18n::Message::ExternalNotCompatible));
-    myTextCell->setTextColor(Palette::Red);
+    myTextCell->setTextColor(*Palette::Red);
   } else {
     myTextCell->setText(I18n::translate(I18n::Message::WithSimulator));
-    myTextCell->setTextColor(Palette::Red);
+    myTextCell->setTextColor(*Palette::Red);
   }
   #endif
 }

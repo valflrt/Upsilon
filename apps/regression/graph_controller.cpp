@@ -391,7 +391,7 @@ void GraphController::setRoundCrossCursorView() {
   if (round) {
     // Set the color although the cursor view stays round
     assert(*m_selectedSeriesIndex < Palette::numberOfDataColors());
-    m_roundCursorView.setColor(Palette::DataColor[*m_selectedSeriesIndex]);
+    m_roundCursorView.setColor(*Palette::DataColor[*m_selectedSeriesIndex]);
   }
   CursorView * nextCursorView = round ? static_cast<Shared::CursorView *>(&m_roundCursorView) : static_cast<Shared::CursorView *>(&m_crossCursorView);
   // Escape if the cursor view stays the same

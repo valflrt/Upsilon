@@ -6,7 +6,7 @@ using namespace Shared;
 
 namespace Probability {
 
-constexpr KDColor DistributionCurveView::k_backgroundColor;
+KDColor const * DistributionCurveView::k_backgroundColor = Palette::BackgroundApps;
 
 void DistributionCurveView::reload() {
   CurveView::reload();
@@ -16,9 +16,9 @@ void DistributionCurveView::reload() {
 void DistributionCurveView::drawRect(KDContext * ctx, KDRect rect) const {
   float lowerBound = m_calculation->lowerBound();
   float upperBound = m_calculation->upperBound();
-  ctx->fillRect(bounds(), k_backgroundColor);
+  ctx->fillRect(bounds(), *k_backgroundColor);
   drawAxis(ctx, rect, Axis::Horizontal);
-  drawLabelsAndGraduations(ctx, rect, Axis::Horizontal, false, false, false, 0, k_backgroundColor);
+  drawLabelsAndGraduations(ctx, rect, Axis::Horizontal, false, false, false, 0, *k_backgroundColor);
   if (m_distribution->type() == Distribution::Type::Normal) {
     /* Special case for the normal distribution, which has always the same curve
      * We indicate the pixels from and to which we color under the curve, not
@@ -29,9 +29,9 @@ void DistributionCurveView::drawRect(KDContext * ctx, KDRect rect) const {
     return;
   }
   if (m_distribution->isContinuous()) {
-    drawCartesianCurve(ctx, rect, -INFINITY, INFINITY, EvaluateXYAtAbscissa, m_distribution, nullptr, Palette::ProbabilityCurve, true, true, lowerBound, upperBound);
+    drawCartesianCurve(ctx, rect, -INFINITY, INFINITY, EvaluateXYAtAbscissa, m_distribution, nullptr, *Palette::ProbabilityCurve, true, true, lowerBound, upperBound);
   } else {
-    drawHistogram(ctx, rect, EvaluateAtAbscissa, m_distribution, nullptr, 0, 1, false, Palette::ProbabilityHistogramBar, Palette::ProbabilityCurve, lowerBound, upperBound+0.5f);
+    drawHistogram(ctx, rect, EvaluateAtAbscissa, m_distribution, nullptr, 0, 1, false, *Palette::ProbabilityHistogramBar, *Palette::ProbabilityCurve, lowerBound, upperBound+0.5f);
   }
 }
 
@@ -59,7 +59,7 @@ void DistributionCurveView::drawStandardNormal(KDContext * ctx, KDRect rect, flo
   // Draw a centered reduced normal curve
   NormalDistribution n;
   constCastedThis->setCurveViewRange(&n);
-  drawCartesianCurve(ctx, rect, -INFINITY, INFINITY, EvaluateXYAtAbscissa, &n, nullptr, Palette::ProbabilityCurve, true, true, pixelToFloat(Axis::Horizontal, colorLowerBoundPixel), pixelToFloat(Axis::Horizontal, colorUpperBoundPixel));
+  drawCartesianCurve(ctx, rect, -INFINITY, INFINITY, EvaluateXYAtAbscissa, &n, nullptr, *Palette::ProbabilityCurve, true, true, pixelToFloat(Axis::Horizontal, colorLowerBoundPixel), pixelToFloat(Axis::Horizontal, colorUpperBoundPixel));
 
   // Put back the previous curve view range
   constCastedThis->setCurveViewRange(previousRange);

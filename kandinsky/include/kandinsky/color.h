@@ -39,13 +39,13 @@ private:
   uint16_t m_value;
 };
 
-constexpr KDColor KDColorBlack = KDColor::RGB24(0x000000);
-constexpr KDColor KDColorWhite = KDColor::RGB24(0xFFFFFF);
-constexpr KDColor KDColorRed = KDColor::RGB24(0xFF0000);
-constexpr KDColor KDColorGreen = KDColor::RGB24(0x00FF00);
-constexpr KDColor KDColorBlue = KDColor::RGB24(0x0000FF);
-constexpr KDColor KDColorYellow = KDColor::RGB24(0xFFFF00);
-constexpr KDColor KDColorOrange = KDColor::RGB24(0xFF9900);
-constexpr KDColor KDColorPurple = KDColor::RGB24(0xFF00DD);
+static constexpr KDColor KDColorBlack = KDColor::RGB24(0x000000);
+static constexpr KDColor KDColorWhite = KDColor::RGB24(0xFFFFFF);
+static constexpr KDColor KDColorRed = KDColor::RGB24(0xFF0000);
+static constexpr KDColor KDColorGreen = KDColor::RGB24(0x00FF00);
+static constexpr KDColor KDColorBlue = KDColor::RGB24(0x0000FF);
+static constexpr KDColor KDColorYellow = KDColor::RGB24(0xFFFF00);
+static constexpr KDColor KDColorOrange = KDColor::RGB24(0xFF9900);
+static constexpr KDColor KDColorPurple = KDColor::RGB24(0xFF00DD);
 
 #endif

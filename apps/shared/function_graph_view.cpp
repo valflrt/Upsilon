@@ -18,7 +18,7 @@ FunctionGraphView::FunctionGraphView(InteractiveCurveViewRange * graphRange,
 }
 
 void FunctionGraphView::drawRect(KDContext * ctx, KDRect rect) const {
-  ctx->fillRect(rect, Palette::BackgroundHard);
+  ctx->fillRect(rect, *Palette::BackgroundHard);
   drawGrid(ctx, rect);
   drawAxes(ctx, rect);
   simpleDrawBothAxesLabels(ctx, rect);

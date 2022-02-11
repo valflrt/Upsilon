@@ -56,12 +56,12 @@ public:
   static KDColor colorOfSeriesAtIndex(int i) {
     assert(i >= 0 && i < k_numberOfSeries);
     assert(i < Palette::numberOfDataColors());
-    return Palette::DataColor[i];
+    return *Palette::DataColor[i];
   }
   static KDColor colorLightOfSeriesAtIndex(int i) {
     assert(i >= 0 && i < k_numberOfSeries);
     assert(i < Palette::numberOfLightDataColors());
-    return Palette::DataColorLight[i];
+    return *Palette::DataColorLight[i];
   }
   double * data() { return reinterpret_cast<double*>(&m_data); }
 protected:

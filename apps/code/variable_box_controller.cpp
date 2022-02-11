@@ -44,8 +44,8 @@ VariableBoxController::VariableBoxController(ScriptStore * scriptStore) :
   m_importedNodesCount(0)
 {
   for (int i = 0; i < k_scriptOriginsCount; i++) {
-    m_subtitleCells[i].setBackgroundColor(Palette::WallScreen);
-    m_subtitleCells[i].setTextColor(Palette::SecondaryText);
+    m_subtitleCells[i].setBackgroundColor(*Palette::WallScreen);
+    m_subtitleCells[i].setTextColor(*Palette::SecondaryText);
   }
 }
 

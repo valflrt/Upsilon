@@ -8,7 +8,7 @@ namespace Shared {
 
 AbstractScrollableMultipleExpressionsView::ContentCell::ContentCell() :
   m_rightExpressionView(),
-  m_approximateSign(k_font, k_defaultApproximateMessage, 0.5f, 0.5f, Palette::SecondaryText),
+  m_approximateSign(k_font, k_defaultApproximateMessage, 0.5f, 0.5f, *Palette::SecondaryText),
   m_centeredExpressionView(),
   m_selectedSubviewPosition(SubviewPosition::Center),
   m_displayCenter(true)
@@ -16,7 +16,7 @@ AbstractScrollableMultipleExpressionsView::ContentCell::ContentCell() :
 }
 
 KDColor AbstractScrollableMultipleExpressionsView::ContentCell::backgroundColor() const {
-  KDColor background = m_even ? Palette::CalculationBackgroundEven : Palette::CalculationBackgroundOdd;
+  KDColor background = m_even ? *Palette::CalculationBackgroundEven : *Palette::CalculationBackgroundOdd;
   return background;
 }
 
@@ -24,13 +24,13 @@ void AbstractScrollableMultipleExpressionsView::ContentCell::setHighlighted(bool
   // Do not call HighlightCell::setHighlighted to avoid marking all cell as dirty
   m_highlighted = highlight;
   KDColor defaultColor = backgroundColor();
-  KDColor color = highlight && m_selectedSubviewPosition == SubviewPosition::Center ? Palette::Select : defaultColor;
+  KDColor color = highlight && m_selectedSubviewPosition == SubviewPosition::Center ? *Palette::Select : defaultColor;
   m_centeredExpressionView.setBackgroundColor(color);
-  color = highlight && m_selectedSubviewPosition == SubviewPosition::Right ? Palette::Select : defaultColor;
+  color = highlight && m_selectedSubviewPosition == SubviewPosition::Right ? *Palette::Select : defaultColor;
   m_rightExpressionView.setBackgroundColor(color);
   m_approximateSign.setBackgroundColor(defaultColor);
   if (leftExpressionView()) {
-    color = highlight && m_selectedSubviewPosition == SubviewPosition::Left ? Palette::Select : defaultColor;
+    color = highlight && m_selectedSubviewPosition == SubviewPosition::Left ? *Palette::Select : defaultColor;
     leftExpressionView()->setBackgroundColor(color);
   }
 }
@@ -48,9 +48,9 @@ void AbstractScrollableMultipleExpressionsView::ContentCell::setEven(bool even) 
 
 void AbstractScrollableMultipleExpressionsView::ContentCell::reloadTextColor() {
   if (displayCenter()) {
-    m_rightExpressionView.setTextColor(Palette::SecondaryText);
+    m_rightExpressionView.setTextColor(*Palette::SecondaryText);
   } else {
-    m_rightExpressionView.setTextColor(Palette::PrimaryText);
+    m_rightExpressionView.setTextColor(*Palette::PrimaryText);
   }
 }
 

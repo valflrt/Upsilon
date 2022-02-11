@@ -16,7 +16,7 @@ ScrollView::ScrollView(View * contentView, ScrollViewDataSource * dataSource) :
   m_bottomMargin(0),
   m_leftMargin(0),
   m_decorators(),
-  m_backgroundColor(Palette::BackgroundApps)
+  m_backgroundColor(*Palette::BackgroundApps)
 {
   assert(m_dataSource != nullptr);
   setDecoratorType(Decorator::Type::Bars);

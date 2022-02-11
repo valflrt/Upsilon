@@ -17,7 +17,7 @@ public:
   static constexpr KDCoordinate k_margin = Metric::CommonSmallMargin;
   ScrollableThreeExpressionsView(Responder * parentResponder) : Shared::AbstractScrollableMultipleExpressionsView(parentResponder, &m_contentCell), m_contentCell() {
     setMargins(k_margin, k_margin, k_margin, k_margin); // Left Right margins are already added by TableCell
-    setBackgroundColor(Palette::BackgroundApps);
+    setBackgroundColor(*Palette::BackgroundApps);
   }
   void resetMemoization();
   void setCalculation(Calculation * calculation, bool canChangeDisplayOutput);
@@ -28,7 +28,7 @@ private:
   class ContentCell : public Shared::AbstractScrollableMultipleExpressionsView::ContentCell {
   public:
     ContentCell() : m_leftExpressionView() {}
-    KDColor backgroundColor() const override { return Palette::BackgroundApps; }
+    KDColor backgroundColor() const override { return *Palette::BackgroundApps; }
     void setEven(bool even) override { return; }
     ExpressionView * leftExpressionView() const override { return const_cast<ExpressionWithEqualSignView *>(&m_leftExpressionView); }
   private:

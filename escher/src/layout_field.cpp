@@ -13,7 +13,7 @@ using namespace Poincare;
 LayoutField::ContentView::ContentView() :
   m_cursor(),
   m_insertionCursor(),
-  m_expressionView(0.0f, 0.5f, Palette::PrimaryText, Palette::BackgroundHard, &m_selectionStart, &m_selectionEnd),
+  m_expressionView(0.0f, 0.5f, *Palette::PrimaryText, *Palette::BackgroundHard, &m_selectionStart, &m_selectionEnd),
   m_cursorView(),
   m_selectionStart(),
   m_selectionEnd(),

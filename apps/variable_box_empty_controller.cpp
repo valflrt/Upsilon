@@ -7,12 +7,12 @@ using namespace Poincare;
 using namespace Ion;
 
 VariableBoxEmptyController::VariableBoxEmptyView::VariableBoxEmptyView() :
-  m_layoutExample(0.5f, 0.5f, Palette::PrimaryText, Palette::BackgroundApps)
+  m_layoutExample(0.5f, 0.5f, *Palette::PrimaryText, *Palette::BackgroundApps)
 {
   for (int i = 0; i < k_numberOfMessages; i++) {
     m_messages[i].setFont(k_font);
     m_messages[i].setAlignment(0.5f, 0.5f);
-    m_messages[i].setBackgroundColor(Palette::BackgroundApps);
+    m_messages[i].setBackgroundColor(*Palette::BackgroundApps);
   }
   m_messages[0].setAlignment(0.5f,1.0f);
   m_messages[k_numberOfMessages-1].setAlignment(0.5f,0.0f);
@@ -29,7 +29,7 @@ void VariableBoxEmptyController::VariableBoxEmptyView::setLayout(Poincare::Layou
 }
 
 void VariableBoxEmptyController::VariableBoxEmptyView::drawRect(KDContext * ctx, KDRect rect) const {
-  drawBorderOfRect(ctx, bounds(), Palette::ListCellBorder);
+  drawBorderOfRect(ctx, bounds(), *Palette::ListCellBorder);
 }
 
 int VariableBoxEmptyController::VariableBoxEmptyView::numberOfSubviews() const {

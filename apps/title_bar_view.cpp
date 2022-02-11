@@ -9,9 +9,9 @@ using namespace Poincare;
 
 TitleBarView::TitleBarView() :
   View(),
-  m_titleView(KDFont::SmallFont, I18n::Message::Default, 0.5f, 0.5f, Palette::ToolbarText, Palette::Toolbar),
-  m_preferenceView(KDFont::SmallFont, 1.0f, 0.5, Palette::ToolbarText, Palette::Toolbar),
-  m_clockView(KDFont::SmallFont, 0.5f, 0.5f, Palette::ToolbarText, Palette::Toolbar),
+  m_titleView(KDFont::SmallFont, I18n::Message::Default, 0.5f, 0.5f, *Palette::ToolbarText, *Palette::Toolbar),
+  m_preferenceView(KDFont::SmallFont, 1.0f, 0.5, *Palette::ToolbarText, *Palette::Toolbar),
+  m_clockView(KDFont::SmallFont, 0.5f, 0.5f, *Palette::ToolbarText, *Palette::Toolbar),
   m_hours(-1),
   m_mins(-1),
   m_clockEnabled(Ion::RTC::mode() != Ion::RTC::Mode::Disabled)
@@ -23,7 +23,7 @@ TitleBarView::TitleBarView() :
 void TitleBarView::drawRect(KDContext * ctx, KDRect rect) const {
   /* As we cheated to layout the title view, we have to fill a very thin
    * rectangle at the top with the background color. */
-  ctx->fillRect(KDRect(0, 0, bounds().width(), 2), Palette::Toolbar);
+  ctx->fillRect(KDRect(0, 0, bounds().width(), 2), *Palette::Toolbar);
 }
 
 void TitleBarView::setTitle(I18n::Message title) {

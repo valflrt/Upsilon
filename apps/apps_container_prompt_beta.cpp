@@ -11,14 +11,14 @@ I18n::Message AppsContainer::k_promptMessages[] = {
   I18n::Message::BetaVersionMessage6};
 
 KDColor AppsContainer::k_promptFGColors[] = {
-  KDColorBlack,
-  KDColorBlack,
-  KDColorBlack,
-  KDColorBlack,
-  KDColorWhite,
-  KDColorBlack,
-  KDColorBlack,
-  Palette::AccentText};
+  &KDColorBlack,
+  &KDColorBlack,
+  &KDColorBlack,
+  &KDColorBlack,
+  &KDColorWhite,
+  &KDColorBlack,
+  &KDColorBlack,
+  *Palette::AccentText};
 
 KDColor AppsContainer::k_promptBGColors[] = {
     KDColorWhite,

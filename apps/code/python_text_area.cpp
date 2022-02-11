@@ -14,22 +14,12 @@ extern "C" {
 
 namespace Code {
 
-constexpr KDColor CommentColor = Palette::CodeComment;
-constexpr KDColor NumberColor =  Palette::CodeNumber;
-constexpr KDColor KeywordColor = Palette::CodeKeyword;
-// constexpr KDColor BuiltinColor = KDColor::RGB24(0x0086B3);
-constexpr KDColor OperatorColor = Palette::CodeOperator;
-constexpr KDColor StringColor = Palette::CodeString;
-constexpr KDColor BackgroundColor = Palette::CodeBackground;
-constexpr KDColor HighlightColor = Palette::CodeBackgroundSelected;
-constexpr KDColor AutocompleteColor = KDColor::RGB24(0xC6C6C6); // TODO Palette change
-
 static inline KDColor TokenColor(mp_token_kind_t tokenKind) {
   if (tokenKind == MP_TOKEN_STRING) {
-    return StringColor;
+    return *Palette::CodeString;
   }
   if (tokenKind == MP_TOKEN_INTEGER || tokenKind == MP_TOKEN_FLOAT_OR_IMAG) {
-    return NumberColor;
+    return *Palette::CodeNumber;
   }
   static_assert(MP_TOKEN_ELLIPSIS + 1 == MP_TOKEN_KW_FALSE
       && MP_TOKEN_KW_FALSE      + 1 == MP_TOKEN_KW_NONE
@@ -69,7 +59,7 @@ static inline KDColor TokenColor(mp_token_kind_t tokenKind) {
       && MP_TOKEN_KW_YIELD      + 1 == MP_TOKEN_OP_TILDE,
     "MP_TOKEN order changed, so Code::PythonTextArea::TokenColor might need to change too.");
   if (tokenKind >= MP_TOKEN_KW_FALSE && tokenKind <= MP_TOKEN_KW_YIELD) {
-    return KeywordColor;
+    return *Palette::CodeKeyword;
   }
   static_assert(MP_TOKEN_OP_TILDE       + 1 == MP_TOKEN_OP_LESS
       && MP_TOKEN_OP_LESS               + 1 == MP_TOKEN_OP_MORE
@@ -121,9 +111,9 @@ static inline KDColor TokenColor(mp_token_kind_t tokenKind) {
       || tokenKind == MP_TOKEN_DEL_EQUAL
       || tokenKind == MP_TOKEN_DEL_MINUS_MORE)
   {
-    return OperatorColor;
+    return *Palette::CodeOperator;
   }
-  return Palette::CodeText;
+  return *Palette::CodeText;
 }
 
 static inline size_t TokenLength(mp_lexer_t * lex, const char * tokenPosition) {
@@ -216,7 +206,7 @@ void PythonTextArea::ContentView::unloadSyntaxHighlighter() {
 }
 
 void PythonTextArea::ContentView::clearRect(KDContext * ctx, KDRect rect) const {
-  ctx->fillRect(rect, BackgroundColor);
+  ctx->fillRect(rect, *Palette::CodeBackground);
 }
 
 #define LOG_DRAWING 0
@@ -246,11 +236,11 @@ void PythonTextArea::ContentView::drawLine(KDContext * ctx, int line, const char
         fromColumn,
         spacesStart,
         std::min(text + byteLength, firstNonSpace) - spacesStart,
-        StringColor,
-        BackgroundColor,
+        *Palette::CodeString,
+        *Palette::CodeBackground,
         selectionStart,
         selectionEnd,
-        HighlightColor);
+        *Palette::CodeBackgroundSelected);
   }
   if (UTF8Helper::CodePointIs(firstNonSpace, UCodePointNull)) {
     return;
@@ -276,17 +266,17 @@ void PythonTextArea::ContentView::drawLine(KDContext * ctx, int line, const char
             UTF8Helper::GlyphOffsetAtCodePoint(text, tokenEnd),
             tokenEnd,
             std::min(text + byteLength, tokenFrom) - tokenEnd,
-            StringColor,
-            BackgroundColor,
+            *Palette::CodeString,
+            *Palette::CodeBackground,
             selectionStart,
             selectionEnd,
-            HighlightColor);
+            *Palette::CodeBackgroundSelected);
       }
       tokenLength = TokenLength(lex, tokenFrom);
       tokenEnd = tokenFrom + tokenLength;
 
       // If the token is being autocompleted, use DefaultColor
-      KDColor color = (tokenFrom <= autocompleteStart && autocompleteStart < tokenEnd) ? Palette::CodeText : TokenColor(lex->tok_kind);
+      KDColor color = (tokenFrom <= autocompleteStart && autocompleteStart < tokenEnd) ? *Palette::CodeText : TokenColor(lex->tok_kind);
 
       LOG_DRAW("Draw \"%.*s\" for token %d\n", tokenLength, tokenFrom, lex->tok_kind);
       drawStringAt(ctx, line,
@@ -294,10 +284,10 @@ void PythonTextArea::ContentView::drawLine(KDContext * ctx, int line, const char
         tokenFrom,
         tokenLength,
         color,
-        BackgroundColor,
+        *Palette::CodeBackground,
         selectionStart,
         selectionEnd,
-        HighlightColor);
+        *Palette::CodeBackgroundSelected);
 
       mp_lexer_to_next(lex);
       LOG_DRAW("Pop token %d\n", lex->tok_kind);
@@ -305,18 +295,18 @@ void PythonTextArea::ContentView::drawLine(KDContext * ctx, int line, const char
 
     tokenFrom += tokenLength;
 
-    // Even if the token is being autocompleted, use CommentColor
+    // Even if the token is being autocompleted, use *Palette::CodeComment
     if (tokenFrom < text + byteLength) {
       LOG_DRAW("Draw comment \"%.*s\" from %d\n", byteLength - (tokenFrom - text), firstNonSpace, tokenFrom);
       drawStringAt(ctx, line,
           UTF8Helper::GlyphOffsetAtCodePoint(text, tokenFrom),
           tokenFrom,
           text + byteLength - tokenFrom,
-          CommentColor,
-          BackgroundColor,
+          *Palette::CodeComment,
+          *Palette::CodeBackground,
           selectionStart,
           selectionEnd,
-          HighlightColor);
+          *Palette::CodeBackgroundSelected);
     }
 
     mp_lexer_free(lex);
@@ -332,11 +322,11 @@ void PythonTextArea::ContentView::drawLine(KDContext * ctx, int line, const char
         UTF8Helper::GlyphOffsetAtCodePoint(text, autocompleteStart),
         autocompleteStart,
         std::min(text + byteLength, m_autocompletionEnd) - autocompleteStart,
-        AutocompleteColor,
-        BackgroundColor,
+        KDColor::RGB24(0xC6C6C6),
+        *Palette::CodeBackground,
         nullptr,
         nullptr,
-        HighlightColor);
+        *Palette::CodeBackgroundSelected);
   }
 }
 

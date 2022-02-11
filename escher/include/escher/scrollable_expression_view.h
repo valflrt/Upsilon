@@ -8,7 +8,7 @@
 
 class ScrollableExpressionView : public ScrollableView, public ScrollViewDataSource {
 public:
-  ScrollableExpressionView(Responder * parentResponder, KDCoordinate leftRightMargin, KDCoordinate topBottomMargin, float horizontalAlignment = 0.0f, float verticalAlignment = 0.5f, KDColor textColor = Palette::PrimaryText, KDColor backgroundColor = Palette::BackgroundApps);
+  ScrollableExpressionView(Responder * parentResponder, KDCoordinate leftRightMargin, KDCoordinate topBottomMargin, float horizontalAlignment = 0.0f, float verticalAlignment = 0.5f, KDColor textColor = *Palette::PrimaryText, KDColor backgroundColor = *Palette::BackgroundApps);
   Poincare::Layout layout() const;
   void setLayout(Poincare::Layout layout);
   void setBackgroundColor(KDColor backgroundColor) override;

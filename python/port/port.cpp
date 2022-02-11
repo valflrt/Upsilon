@@ -230,20 +230,20 @@ KDColor MicroPython::Color::Parse(mp_obj_t input, Mode mode){
   if (mp_obj_is_str(input)) {
     size_t l;
     const char * color = mp_obj_str_get_data(input, &l);
-    constexpr NamedColor pairs[] = {
-      NamedColor("blue", KDColorBlue),
-      NamedColor("b", KDColorBlue),
-      NamedColor("red", KDColorRed),
-      NamedColor("r", KDColorRed),
+    const NamedColor pairs[] = {
+      NamedColor("blue", &KDColorBlue),
+      NamedColor("b", &KDColorBlue),
+      NamedColor("red", &KDColorRed),
+      NamedColor("r", &KDColorRed),
       NamedColor("green", Palette::Green),
       NamedColor("g", Palette::Green),
-      NamedColor("yellow", KDColorYellow),
-      NamedColor("y", KDColorYellow),
+      NamedColor("yellow", &KDColorYellow),
+      NamedColor("y", &KDColorYellow),
       NamedColor("brown", Palette::Brown),
-      NamedColor("black", KDColorBlack),
-      NamedColor("k", KDColorBlack),
-      NamedColor("white", KDColorWhite),
-      NamedColor("w", KDColorWhite),
+      NamedColor("black", &KDColorBlack),
+      NamedColor("k", &KDColorBlack),
+      NamedColor("white", &KDColorWhite),
+      NamedColor("w", &KDColorWhite),
       NamedColor("pink", Palette::Pink),
       NamedColor("orange", Palette::Orange),
       NamedColor("purple", Palette::Purple),

@@ -42,7 +42,7 @@ void TextField::ContentView::setTextColor(KDColor textColor) {
 void TextField::ContentView::drawRect(KDContext * ctx, KDRect rect) const {
   KDColor backgroundColor = m_backgroundColor;
   /*if (m_isEditing) {
-    backgroundColor = Palette::BackgroundHard;
+    backgroundColor = *Palette::BackgroundHard;
   }*/
   ctx->fillRect(bounds(), backgroundColor);
   if (selectionIsEmpty()) {
@@ -55,7 +55,7 @@ void TextField::ContentView::drawRect(KDContext * ctx, KDRect rect) const {
     int selectionLength = m_selectionEnd - m_selectionStart;
     textToDraw += selectionOffset;
     // Draw the selected text
-    ctx->drawString(text() + selectionOffset, glyphFrameAtPosition(text(), textToDraw).origin(), m_font, m_textColor, Palette::Select, selectionLength);
+    ctx->drawString(text() + selectionOffset, glyphFrameAtPosition(text(), textToDraw).origin(), m_font, m_textColor, *Palette::Select, selectionLength);
     textToDraw += selectionLength;
     // Draw the non selected text on the right of the selection
     ctx->drawString(text() + selectionOffset + selectionLength, glyphFrameAtPosition(text(), textToDraw).origin(), m_font, m_textColor, backgroundColor);

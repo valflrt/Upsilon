@@ -8,7 +8,7 @@ extern "C" {
 
 ScrollViewIndicator::ScrollViewIndicator() :
   View(),
-  m_color(Palette::ScrollBarForeground),
+  m_color(*Palette::ScrollBarForeground),
   m_margin(Metric::CommonTopMargin)
 {
 }
@@ -17,7 +17,7 @@ ScrollViewBar::ScrollViewBar() :
   ScrollViewIndicator(),
   m_offset(0),
   m_visibleLength(0),
-  m_trackColor(Palette::ScrollBarBackground)
+  m_trackColor(*Palette::ScrollBarBackground)
 {
 }
 

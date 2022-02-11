@@ -60,8 +60,8 @@ mp_obj_t modkandinsky_set_pixel(mp_obj_t x, mp_obj_t y, mp_obj_t input) {
 mp_obj_t modkandinsky_draw_string(size_t n_args, const mp_obj_t * args) {
   const char * text = mp_obj_str_get_str(args[0]);
   KDPoint point(mp_obj_get_int(args[1]), mp_obj_get_int(args[2]));
-  KDColor textColor = (n_args >= 4) ? MicroPython::Color::Parse(args[3]) : Palette::PrimaryText;
-  KDColor backgroundColor = (n_args >= 5) ? MicroPython::Color::Parse(args[4]) : Palette::HomeBackground;
+  KDColor textColor = (n_args >= 4) ? MicroPython::Color::Parse(args[3]) : *Palette::PrimaryText;
+  KDColor backgroundColor = (n_args >= 5) ? MicroPython::Color::Parse(args[4]) : *Palette::HomeBackground;
   const KDFont * font = (n_args >= 6) ? ((mp_obj_is_true(args[5])) ? KDFont::SmallFont : KDFont::LargeFont) : KDFont::LargeFont;
   MicroPython::ExecutionEnvironment::currentExecutionEnvironment()->displaySandbox();
   KDIonContext::sharedContext()->drawString(text, point, font, textColor, backgroundColor);
@@ -249,11 +249,11 @@ mp_obj_t modkandinsky_get_keys() {
 
 mp_obj_t modkandinsky_get_palette() {
   mp_obj_t modkandinsky_palette_table = mp_obj_new_dict(0);
-  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_PrimaryText), TupleForKDColor(Palette::PrimaryText));
-  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_SecondaryText), TupleForKDColor(Palette::SecondaryText));
-  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_AccentText), TupleForKDColor(Palette::AccentText));
-  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_Toolbar), TupleForKDColor(Palette::Toolbar));
-  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_HomeBackground), TupleForKDColor(Palette::HomeBackground));
+  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_PrimaryText), TupleForKDColor(*Palette::PrimaryText));
+  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_SecondaryText), TupleForKDColor(*Palette::SecondaryText));
+  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_AccentText), TupleForKDColor(*Palette::AccentText));
+  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_Toolbar), TupleForKDColor(*Palette::Toolbar));
+  mp_obj_dict_store(modkandinsky_palette_table, MP_ROM_QSTR(MP_QSTR_HomeBackground), TupleForKDColor(*Palette::HomeBackground));
 
   return modkandinsky_palette_table;
 }

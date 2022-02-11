@@ -52,15 +52,15 @@ public:
 private:
   class NamedColor {
   public:
-    constexpr NamedColor(const char * name, KDColor color) :
+    constexpr NamedColor(const char * name, KDColor const * color) :
       m_name(name),
       m_color(color)
     {}
     const char * name() const { return m_name; }
-    KDColor color() const { return m_color; }
+    KDColor color() const { return *m_color; }
   private:
     const char * m_name;
-    KDColor m_color;
+    KDColor const * m_color;
   };
 };
 

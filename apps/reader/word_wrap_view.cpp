@@ -243,7 +243,7 @@ void WordWrapTextView::setBookSave(BookSave save) {
 bool WordWrapTextView::updateTextColorForward(const char * colorStart) const {
 
   if (*(colorStart + 1) == '\\') {
-    m_textColor = Palette::PrimaryText;
+    m_textColor = *Palette::PrimaryText;
     return (*(colorStart + 3) == '%' || *(colorStart + 4) == '%');
   }
 
@@ -254,56 +254,56 @@ bool WordWrapTextView::updateTextColorForward(const char * colorStart) const {
   {
     case 'r':
         if (*(colorStart+2) == 'l') {
-            m_textColor = Palette::RedLight;
+            m_textColor = *Palette::RedLight;
             keySize = 2;
         }
         else {
-            m_textColor = Palette::Red;
+            m_textColor = *Palette::Red;
         }
         break;
     case 'm':
-        m_textColor = Palette::Magenta;
+        m_textColor = *Palette::Magenta;
         break;
     case 't':
-        m_textColor = Palette::Turquoise;
+        m_textColor = *Palette::Turquoise;
         break;
     case 'p':
         if (*(colorStart+2) == 'k') {
-            m_textColor = Palette::Pink;
+            m_textColor = *Palette::Pink;
             keySize = 2;
         }
         else if (*(colorStart+2) == 'p') {
-            m_textColor = Palette::Purple;
+            m_textColor = *Palette::Purple;
             keySize = 2;
         }
         break;
     case 'b':
         if (*(colorStart+2) == 'r') {
-            m_textColor = Palette::Brown;
+            m_textColor = *Palette::Brown;
             keySize = 2;
         }
         if (*(colorStart+2) == 'l') {
-            m_textColor = Palette::BlueLight;
+            m_textColor = *Palette::BlueLight;
             keySize = 2;
         }
         else {
-            m_textColor = Palette::Blue;
+            m_textColor = *Palette::Blue;
         }
         break;
     case 'o':
-        m_textColor = Palette::Orange;
+        m_textColor = *Palette::Orange;
         break;
     case 'g':
         if (*(colorStart+2) == 'l') {
-            m_textColor = Palette::GreenLight;
+            m_textColor = *Palette::GreenLight;
             keySize = 2;
         }
         else {
-            m_textColor = Palette::Green;
+            m_textColor = *Palette::Green;
         }
         break;
     case 'c':
-        m_textColor = Palette::Cyan;
+        m_textColor = *Palette::Cyan;
         break;
 
     default:
@@ -330,56 +330,56 @@ bool WordWrapTextView::updateTextColorBackward(const char * colorStart) const {
   {
     case 'r':
         if (*(colorStart+2) == 'l') {
-            m_textColor = Palette::RedLight;
+            m_textColor = *Palette::RedLight;
             keySize = 2;
         }
         else {
-            m_textColor = Palette::Red;
+            m_textColor = *Palette::Red;
         }
         break;
     case 'm':
-        m_textColor = Palette::Magenta;
+        m_textColor = *Palette::Magenta;
         break;
     case 't':
-        m_textColor = Palette::Turquoise;
+        m_textColor = *Palette::Turquoise;
         break;
     case 'p':
         if (*(colorStart+2) == 'k') {
-            m_textColor = Palette::Pink;
+            m_textColor = *Palette::Pink;
             keySize = 2;
         }
         else if (*(colorStart+2) == 'p') {
-            m_textColor = Palette::Purple;
+            m_textColor = *Palette::Purple;
             keySize = 2;
         }
         break;
     case 'b':
         if (*(colorStart+2) == 'r') {
-            m_textColor = Palette::Brown;
+            m_textColor = *Palette::Brown;
             keySize = 2;
         }
         if (*(colorStart+2) == 'l') {
-            m_textColor = Palette::BlueLight;
+            m_textColor = *Palette::BlueLight;
             keySize = 2;
         }
         else {
-            m_textColor = Palette::Blue;
+            m_textColor = *Palette::Blue;
         }
         break;
     case 'o':
-        m_textColor = Palette::Orange;
+        m_textColor = *Palette::Orange;
         break;
     case 'g':
         if (*(colorStart+2) == 'l') {
-            m_textColor = Palette::GreenLight;
+            m_textColor = *Palette::GreenLight;
             keySize = 2;
         }
         else {
-            m_textColor = Palette::Green;
+            m_textColor = *Palette::Green;
         }
         break;
     case 'c':
-        m_textColor = Palette::Cyan;
+        m_textColor = *Palette::Cyan;
         break;
 
     default:
