@@ -50,11 +50,11 @@
             "BackgroundSelected": "2b281f",
             "Text": "ffffff",
             "Comment": "999988",
-            "Number": "1abc9c",
-            "Keyword": "c03535",
-            "Operator": "e67e22",
-            "String": "3498db",
-            "GutterViewBackground": "1f1f1f"
+            "Number": "009999",
+            "Keyword": "ff000c",
+            "Operator": "d73a49",
+            "String": "032f62",
+            "GutterViewBackground": "E4E6E7"
         },
         "Probability": {
             "Curve": "ffb734",
@@ -76,9 +76,9 @@
             "Text": "47443a"
         },
         "Toolbox": {
-            "HeaderBackground": "3b3b3b",
-            "HeaderText": "ffffff",
-            "HeaderBorder": "3b3b3b",
+            "HeaderBackground": "656975",
+            "HeaderText": "000000",
+            "HeaderBorder": "414147",
             "Background": "ffffff"
         },
         "List": {
@@ -97,11 +97,11 @@
             "Text": "ffffff"
         },
         "Tab": {
-            "Background": "2e2e2e",
+            "Background": "4a4a4a",
             "BackgroundSelected": "2b281f",
             "BackgroundActive": "000000",
             "BackgroundSelectedAndActive": "26272e",
-            "Text": "ffffff",
+            "Text": "000000",
             "TextActive": "656975"
         },
         "SubTab": {

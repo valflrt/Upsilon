@@ -1,0 +1,150 @@
+{
+  "name": "Val Cursed Night Light",
+  "icons": "val_cursed_night",
+  "colors": {
+    "PrimaryText": "000000",
+    "SecondaryText": "907f6d",
+    "AccentText": "6547aa",
+    "ApproximateSignText": "776552",
+    "ApproximateExpressionText": "776552",
+    "Background": {
+      "Hard": "ffffff",
+      "Apps": "fdfdfd",
+      "AppsSecondary": "faf9f9"
+    },
+    "Toolbar": {
+      "": "896bcb",
+      "Text": "ffffff"
+    },
+    "ExpressionInput": {
+      "Background": "f2f1ef",
+      "Border": "efecea"
+    },
+    "Grid": {
+      "PrimaryLine": "efecea",
+      "SecondaryLine": "fcfbfb"
+    },
+    "Battery": {
+      "": "ffffff",
+      "InCharge": "2cea6a",
+      "Low": "e52c3c"
+    },
+    "ScrollBar": {
+      "Foreground": "645340",
+      "Background": "efecea"
+    },
+    "Control": {
+      "": "6547aa",
+      "Enabled": "b6a0ed",
+      "Disabled": "c2b8ab"
+    },
+    "Calculation": {
+      "BackgroundOdd": "fdfdfd",
+      "BackgroundEven": "ffffff",
+      "EmptyBox": "e1dcd7",
+      "EmptyBoxNeeded": "6547aa",
+      "TrigoAndComplexForeground": "a900ff"
+    },
+    "Code": {
+      "Background": "ffffff",
+      "BackgroundSelected": "f2f1ef",
+      "Text": "000000",
+      "Comment": "ac9b9c",
+      "Number": "932e9c",
+      "Keyword": "3d1aca",
+      "Operator": "ee3da4",
+      "String": "ca48c8",
+      "GutterViewBackground": "f5f4f4"
+    },
+    "Probability": {
+      "Curve": "6547aa",
+      "CellBorder": "f8f7f7",
+      "HistogramBar": "efecea"
+    },
+    "Statistics": {
+      "Box": "6547aa",
+      "BoxVerticalLine": "efecea",
+      "Selected": "6547aa",
+      "NotSelected": "fcfbfb"
+    },
+    "Graph": {
+      "Tangent": "776552"
+    },
+    "SubMenu": {
+      "Background": "f2f1ef",
+      "Border": "fdfdfd",
+      "Text": "000000"
+    },
+    "Toolbox": {
+      "HeaderBackground": "645340",
+      "HeaderText": "ffffff",
+      "HeaderBorder": "645340",
+      "Background": "000000"
+    },
+    "List": {
+      "CellBackground": "ffffff",
+      "CellBackgroundSelected": "f2f1ef",
+      "CellBorder": "ededef"
+    },
+    "Button": {
+      "Background": "f5f4f3",
+      "BackgroundSelected": "e5e1dc",
+      "BackgroundSelectedHighContrast": "b6a0ed",
+      "Border": "d0c7be",
+      "RowBorder": "efecea",
+      "BorderOut": "fcfbfb",
+      "Shadow": "1e1412",
+      "Text": "000000"
+    },
+    "Tab": {
+      "Background": "645340",
+      "BackgroundSelected": "988876",
+      "BackgroundActive": "fdfdfd",
+      "BackgroundSelectedAndActive": "f4f3f1",
+      "Text": "ffffff",
+      "TextActive": "000000"
+    },
+    "SubTab": {
+      "Background": "f2f1ef",
+      "BackgroundSelected": "eae7e3",
+      "Text": "000000"
+    },
+    "Banner": {
+      "FirstBackground": "645340",
+      "FirstBorder": "645340",
+      "FirstText": "ffffff",
+      "FirstVariantBackground": "645340",
+      "FirstVariantBorder": "fdfdfd",
+      "FirstVariantText": "ffffff",
+      "SecondBackground": "f2f1ef",
+      "SecondBorder": "fdfdfd",
+      "SecondText": "000000"
+    },
+    "Home": {
+      "Background": "ffffff",
+      "CellBackground": "ffffff",
+      "CellBackgroundActive": "645340",
+      "CellText": "000000",
+      "CellTextActive": "ffffff",
+      "CellTextExternal": "000000",
+      "CellTextExternalActive": "ffffff"
+    },
+    "Atom": {
+      "Unknown": "f9f8f8",
+      "Text": "000000",
+      "AlkaliMetal": "e5b98f",
+      "AlkaliEarthMetal": "eaaf86",
+      "Lanthanide": "cceec7",
+      "Actinide": "bfe79b",
+      "TransitionMetal": "c1ddef",
+      "PostTransitionMetal": "ebb387",
+      "Metalloid": "ebcb87",
+      "Halogen": "acc4e9",
+      "ReactiveNonmetal": "efdc92",
+      "NobleGas": "b8d9ee",
+      "TableLines": "453926",
+      "Highlight": "000000",
+      "Background": "efecea"
+    }
+  }
+}
